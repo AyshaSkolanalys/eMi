@@ -1,12 +1,7 @@
 // src/components/AdaptiveSection.tsx
-import * as React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-
-// import the single combined asset
-import adaptiveImage from "../assets/images/adaptive.png"
-
-const MotionBox = motion(Box);
+import adaptiveImage from "../assets/images/adaptive.png";
 
 export default function AdaptiveSection() {
   return (
@@ -21,21 +16,16 @@ export default function AdaptiveSection() {
       }}
     >
       <Container maxWidth="lg" sx={{ textAlign: "center" }}>
-        {/* Title */}
         <Typography
           variant="h3"
           component="h2"
           fontWeight={700}
           gutterBottom
-          sx={{
-            color: "orange.400",
-            fontSize: { xs: "1.8rem", md: "2.5rem" },
-          }}
+          sx={{ color: "orange.400", fontSize: { xs: "1.8rem", md: "2.5rem" } }}
         >
           Adaptive, safe, and built to grow with every child
         </Typography>
 
-        {/* Description */}
         <Typography
           variant="body1"
           sx={{
@@ -46,19 +36,12 @@ export default function AdaptiveSection() {
             color: "grey.300",
           }}
         >
-          eMi is an AI-powered learning companion created for preschools.
-          Running on a dedicated tablet with no distractions, it offers
-          personalized games that nurture skills in math, language, and
-          emotional growth. Each child has their own avatar, making it easy to
-          pick up where they left off, while teachers can track progress, nudge
-          incomplete tasks, and gain clear insights into every child’s
-          development. eMi works seamlessly offline and syncs data when online,
-          ensuring learning never stops.
+          eMi is an AI-powered learning companion created for preschools. Running on a dedicated tablet with no distractions, it offers personalized games that nurture skills in math, language, and emotional growth. Each child has their own avatar, making it easy to pick up where they left off, while teachers can track progress, nudge incomplete tasks, and gain clear insights into every child’s development. eMi works seamlessly offline and syncs data when online, ensuring learning never stops.
         </Typography>
 
-        {/* Image */}
-        <MotionBox
-          component="img"
+        {/* Use Box rendered as motion.img to keep MUI styles + Framer Motion */}
+        <Box
+          component={motion.img as React.ElementType}
           src={adaptiveImage}
           alt="eMi adaptive learning mockup"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -71,6 +54,7 @@ export default function AdaptiveSection() {
             mx: "auto",
             borderRadius: 2,
             boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+            display: "block",
           }}
         />
       </Container>
