@@ -1,5 +1,3 @@
-// src/components/WhatsNext.tsx
-import React from "react";
 import {
   Box,
   Container,
@@ -10,6 +8,7 @@ import {
   Stack,
 } from "@mui/material";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 export type WhatsNextProps = {
   fadedHeading?: string;          // big ghost heading in the background
@@ -26,11 +25,14 @@ export type WhatsNextProps = {
 const MotionPaper = motion(Paper);
 const MotionBox = motion(Box);
 
-const appear = {
+const appear: Variants = {
   hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
-
 export default function WhatsNext({
   fadedHeading = "What’s Next",
   productTitle = "eMi 2.0",

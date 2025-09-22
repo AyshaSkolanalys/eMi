@@ -8,9 +8,11 @@ import {
   useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import LangImg from '../assets/images/lang.jpg'
-import MathImg from '../assets/images/math.jpg'
-import SocialImg from '../assets/images/social.jpg'
+import type { Variants, TargetAndTransition } from "framer-motion";
+
+import LangImg from "../assets/images/lang.jpg";
+import MathImg from "../assets/images/math.jpg";
+import SocialImg from "../assets/images/social.jpg";
 
 type Pillar = {
   imageSrc: string; // import & pass in
@@ -29,24 +31,30 @@ export type CurriculumBackedSectionProps = {
 const MotionBox = motion(Box);
 const MotionPaper = motion(Paper);
 
-const sectionVariants = {
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 10 },
-  show: (i: number) => ({
+  show: (i: number): TargetAndTransition => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.12 + i * 0.08, duration: 0.45, ease: "easeOut" },
+    transition: {
+      delay: 0.12 + i * 0.08,
+      duration: 0.45,
+      ease: "easeOut",
+    },
   }),
 };
 
 export default function CurriculumBackedSection({
   heading = "Learning That’s Backed by Curriculum",
-  subheading = "Every activity is carefully aligned with early childhood curriculum, designed together with preschool experts.",
-  thinNote = "That means children are not just playing — they are building real skills that matter for school readiness and lifelong learning.",
+  subheading =
+    "Every activity is carefully aligned with early childhood curriculum, designed together with preschool experts.",
+  thinNote =
+    "That means children are not just playing — they are building real skills that matter for school readiness and lifelong learning.",
   pillars = [
     {
       imageSrc: LangImg,
@@ -78,8 +86,7 @@ export default function CurriculumBackedSection({
       component="section"
       sx={{
         py: { xs: 6, md: 10 },
-        background:
-          "linear-gradient(180deg, #14202B 0%, #0F1720 100%)",
+        background: "linear-gradient(180deg, #14202B 0%, #0F1720 100%)",
       }}
     >
       <Container maxWidth="lg">

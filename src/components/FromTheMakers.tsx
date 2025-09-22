@@ -1,5 +1,5 @@
 // src/components/FromTheMakers.tsx
-import React from "react";
+import type { ReactNode } from "react";
 import {
   Box,
   Button,
@@ -9,8 +9,10 @@ import {
   useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import SkolanalysIllustration from '../assets/images/skolanalys-illustration.png';
-import MyranScreenshot from '../assets/images/myran-screenshot.png';
+import type { Variants, TargetAndTransition } from "framer-motion";
+
+import SkolanalysIllustration from "../assets/images/skolanalys-illustration.png";
+import MyranScreenshot from "../assets/images/myran-screenshot.png";
 
 type MakerItem = {
   logoSrc?: string;
@@ -27,21 +29,22 @@ type MakerItem = {
 };
 
 export type FromTheMakersProps = {
-  introTop?: React.ReactNode; // italic first line
-  introBottom?: React.ReactNode; // italic second line
+  introTop?: ReactNode; // italic first line
+  introBottom?: ReactNode; // italic second line
   items?: MakerItem[]; // two blocks expected
 };
 
 const MotionBox = motion(Box);
+const MotionItem = motion(Box);
 
-const appear = {
+const appear: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 14 },
-  show: (i: number) => ({
+  show: (i: number): TargetAndTransition => ({
     opacity: 1,
     y: 0,
     transition: { delay: 0.12 + i * 0.08, duration: 0.5, ease: "easeOut" },
@@ -63,10 +66,7 @@ export default function FromTheMakers({
     </>
   ),
   introBottom = (
-    <>
-      Our work in the Swedish education sector goes beyond vision — it’s rooted
-      in real, on-the-ground impact.
-    </>
+    <>Our work in the Swedish education sector goes beyond vision — it’s rooted in real, on-the-ground impact.</>
   ),
   items = [
     {
@@ -104,16 +104,10 @@ export default function FromTheMakers({
         {/* Intro */}
         <MotionBox variants={appear} initial="hidden" animate="show">
           <Stack spacing={1.2} alignItems="center" textAlign="center" sx={{ mb: { xs: 6, md: 8 } }}>
-            <Typography
-              variant="h6"
-              sx={{ fontStyle: "italic", opacity: 0.95, maxWidth: 900 }}
-            >
+            <Typography variant="h6" sx={{ fontStyle: "italic", opacity: 0.95, maxWidth: 900 }}>
               {introTop}
             </Typography>
-            <Typography
-              variant="h6"
-              sx={{ fontStyle: "italic", opacity: 0.8, maxWidth: 900 }}
-            >
+            <Typography variant="h6" sx={{ fontStyle: "italic", opacity: 0.8, maxWidth: 900 }}>
               {introBottom}
             </Typography>
           </Stack>
@@ -206,7 +200,7 @@ export default function FromTheMakers({
             );
 
             return (
-              <motion.div
+              <MotionItem
                 key={i}
                 variants={itemVariants}
                 initial="hidden"
@@ -225,7 +219,7 @@ export default function FromTheMakers({
                   {Content}
                   {Visual}
                 </Box>
-              </motion.div>
+              </MotionItem>
             );
           })}
         </Box>

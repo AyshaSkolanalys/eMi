@@ -1,11 +1,13 @@
 // src/components/TeamSection.tsx
 import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import NordicLogo from '../assets/images/2mnordic.png';
-import FoxsyLogo from '../assets/images/foxsy.png';
-import AiLogo from '../assets/images/ai.png';
-import HelsingborgLogo from '../assets/images/helsingborg.png';
-import UniversityLogo from '../assets/images/university.png';
+import type { Variants, TargetAndTransition } from "framer-motion";
+
+import NordicLogo from "../assets/images/2mnordic.png";
+import FoxsyLogo from "../assets/images/foxsy.png";
+import AiLogo from "../assets/images/ai.png";
+import HelsingborgLogo from "../assets/images/helsingborg.png";
+import UniversityLogo from "../assets/images/university.png";
 
 type Partner = {
   logoSrc: string;         // import and pass in
@@ -23,14 +25,14 @@ export type TeamSectionProps = {
 
 const MotionBox = motion(Box);
 
-const sectionVariants = {
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 8 },
-  show: (i: number) => ({
+  show: (i: number): TargetAndTransition => ({
     opacity: 1,
     y: 0,
     transition: { delay: 0.1 + i * 0.05, duration: 0.4, ease: "easeOut" },
@@ -56,8 +58,7 @@ export default function TeamSection({
       component="section"
       sx={{
         py: { xs: 8, md: 12 },
-        backgroundColor:
-          theme.palette.mode === "dark" ? "#F4F7FA" : "#F4F7FA", // light band like in the mock
+        backgroundColor: theme.palette.mode === "dark" ? "#F4F7FA" : "#F4F7FA",
       }}
     >
       <Container maxWidth="lg">
@@ -126,7 +127,14 @@ export default function TeamSection({
               );
 
               return p.href ? (
-                <Box key={p.alt + "_link"} component="a" href={p.href} target="_blank" rel="noreferrer" sx={{ lineHeight: 0 }}>
+                <Box
+                  key={p.alt + "_link"}
+                  component="a"
+                  href={p.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={{ lineHeight: 0 }}
+                >
                   {content}
                 </Box>
               ) : (

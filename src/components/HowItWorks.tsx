@@ -1,5 +1,4 @@
 // src/components/HowItWorks.tsx
-import React from "react";
 import {
   Box,
   Container,
@@ -10,6 +9,7 @@ import {
   Divider,
 } from "@mui/material";
 import { motion } from "framer-motion";
+import type { Variants, TargetAndTransition } from "framer-motion";
 
 export type Feature = {
   title: string;
@@ -27,15 +27,16 @@ export type HowItWorksProps = {
 
 const MotionPaper = motion(Paper);
 const MotionBox = motion(Box);
+const MotionItem = motion(Box);
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0, y: 12 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 10 },
-  show: (i: number) => ({
+  show: (i: number): TargetAndTransition => ({
     opacity: 1,
     y: 0,
     transition: { delay: 0.1 + i * 0.08, duration: 0.45, ease: "easeOut" },
@@ -165,37 +166,28 @@ export default function HowItWorks({
               }}
             >
               {features.map((f, i) => (
-                <motion.div
+                <MotionItem
                   key={i}
-                  style={{
-                    flexBasis: "100%",
-                    flexGrow: 1,
-                    maxWidth: "100%",
-                  }}
-                  // on md+ each item takes half width (2 per row)
-                  // we use a wrapper Box to apply responsive sizing
                   variants={itemVariants}
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true, amount: 0.2 }}
                   custom={i}
+                  sx={{
+                    flex: "1 1 100%",
+                    maxWidth: { xs: "100%", md: "50%" }, // 2 per row on md+
+                    pr: { md: 1 },
+                  }}
                 >
-                  <Box
-                    sx={{
-                      width: { xs: "100%", md: "calc(50% - 0px)" },
-                      pr: { md: 1 },
-                    }}
-                  >
-                    <Stack spacing={1.2}>
-                      <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                        {f.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {f.description}
-                      </Typography>
-                    </Stack>
-                  </Box>
-                </motion.div>   
+                  <Stack spacing={1.2}>
+                    <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                      {f.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {f.description}
+                    </Typography>
+                  </Stack>
+                </MotionItem>
               ))}
             </Box>
           </Paper>
