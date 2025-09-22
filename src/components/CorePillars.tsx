@@ -1,18 +1,6 @@
 // src/components/CorePillars.tsx
-import * as React from "react";
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  useTheme,
-  Paper,
-} from "@mui/material";
+import { Box, Container, Typography, useTheme, Paper } from "@mui/material";
 import { motion } from "framer-motion";
-import CurriculumIcon from '../assets/images/curriculum.svg';
-import PoweredLearningIcon from '../assets/images/poweredLearning.svg';
-import TeacherFriendlyIcon from '../assets/images/teacherFriendly.svg';
-import InclusiveIcon from '../assets/images/inclusive.svg';
 
 import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
 import EmojiEmotionsRoundedIcon from "@mui/icons-material/EmojiEmotionsRounded";
@@ -22,7 +10,6 @@ import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
 type Pillar = {
   title: string;
   description: string;
-  // you can swap icons per pillar if needed
   Icon: React.ElementType;
 };
 
@@ -102,73 +89,76 @@ export default function CorePillars({
             backdropFilter: "blur(4px)",
           }}
         >
-          <Grid
-            container
-            spacing={{ xs: 4, md: 6 }}
-            columns={{ xs: 1, sm: 2, md: 12 }}
+          {/* Responsive grid without MUI Grid */}
+          <Box
+            sx={{
+              display: "grid",
+              gap: { xs: 4, md: 6 },
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "1fr 1fr",
+                md: "1fr 1fr", // 2 columns at md+
+              },
+            }}
           >
             {pillars.map((p, idx) => {
               const Icon = p.Icon;
               return (
-                <Grid key={p.title} item xs={1} sm={1} md={6}>
-                  <MotionPaper
-                    elevation={0}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.5, delay: idx * 0.08 }}
-                    whileHover={{ y: -4 }}
+                <MotionPaper
+                  key={p.title}
+                  elevation={0}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  whileHover={{ y: -4 }}
+                  sx={{
+                    bgcolor: "transparent",
+                    p: { xs: 1, md: 2 },
+                  }}
+                >
+                  <Box
                     sx={{
-                      bgcolor: "transparent",
-                      p: { xs: 1, md: 2 },
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      textAlign: "center",
+                      gap: 1.5,
                     }}
                   >
                     <Box
                       sx={{
-                        display: "flex",
-                        flexDirection: "column",
+                        display: "inline-flex",
                         alignItems: "center",
-                        textAlign: "center",
-                        gap: 1.5,
+                        justifyContent: "center",
+                        width: 56,
+                        height: 56,
+                        borderRadius: 2,
+                        border: "2px solid #ffb300",
+                        color: "#ffb300",
                       }}
                     >
-                      <Box
-                        sx={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          width: 56,
-                          height: 56,
-                          borderRadius: 2,
-                          border: "2px solid #ffb300", // amber-ish like your design
-                          color: "#ffb300",
-                        }}
-                      >
-                        <Icon fontSize="medium" />
-                      </Box>
-
-                      <Typography
-                        variant="h6"
-                        sx={{ fontWeight: 700, mt: 1 }}
-                      >
-                        {p.title}
-                      </Typography>
-
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: theme.palette.grey[300],
-                          maxWidth: 440,
-                        }}
-                      >
-                        {p.description}
-                      </Typography>
+                      <Icon fontSize="medium" />
                     </Box>
-                  </MotionPaper>
-                </Grid>
+
+                    <Typography variant="h6" sx={{ fontWeight: 700, mt: 1 }}>
+                      {p.title}
+                    </Typography>
+
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: theme.palette.grey[300],
+                        maxWidth: 440,
+                      }}
+                    >
+                      {p.description}
+                    </Typography>
+                  </Box>
+                </MotionPaper>
               );
             })}
-          </Grid>
+          </Box>
         </Paper>
       </Container>
     </Box>
