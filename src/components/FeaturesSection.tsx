@@ -1,6 +1,7 @@
 // src/components/FeaturesSection.tsx
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+import type { Variants, TargetAndTransition } from "framer-motion";
 
 export type Feature = {
   title: string;
@@ -14,14 +15,14 @@ export type FeaturesSectionProps = {
 
 const MotionBox = motion(Box);
 
-const sectionVariants = {
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 8 },
-  show: (i: number) => ({
+  show: (i: number): TargetAndTransition => ({
     opacity: 1,
     y: 0,
     transition: { delay: 0.1 + i * 0.06, duration: 0.4, ease: "easeOut" },
@@ -31,41 +32,13 @@ const itemVariants = {
 export default function FeaturesSection({
   heading = "Features",
   features = [
-    {
-      title: "Adaptive AI Learning",
-      description:
-        "Activities adjust instantly to each child’s pace, ensuring learning is always challenging yet achievable.",
-    },
-    {
-      title: "Always-There Mascot",
-      description:
-        "A friendly guide that supports, motivates, and celebrates every child — making learning fun and personal.",
-    },
-    {
-      title: "Offline-First Design",
-      description:
-        "Works without internet, syncing automatically when online, so classrooms never depend on Wi-Fi.",
-    },
-    {
-      title: "Curriculum Aligned",
-      description:
-        "Developed in collaboration with preschool experts, ensuring every activity matches early learning goals.",
-    },
-    {
-      title: "Teacher Dashboard",
-      description:
-        "Real-time feedback, progress tracking, and gentle nudging tools to keep learning on track.",
-    },
-    {
-      title: "Safe & Focused",
-      description:
-        "Runs only eMi — no other apps, ads, or distractions.",
-    },
-    {
-      title: "Multilingual & Inclusive",
-      description:
-        "Accessible for all children, regardless of language, background, or needs.",
-    },
+    { title: "Adaptive AI Learning", description: "Activities adjust instantly to each child’s pace, ensuring learning is always challenging yet achievable." },
+    { title: "Always-There Mascot", description: "A friendly guide that supports, motivates, and celebrates every child — making learning fun and personal." },
+    { title: "Offline-First Design", description: "Works without internet, syncing automatically when online, so classrooms never depend on Wi-Fi." },
+    { title: "Curriculum Aligned", description: "Developed in collaboration with preschool experts, ensuring every activity matches early learning goals." },
+    { title: "Teacher Dashboard", description: "Real-time feedback, progress tracking, and gentle nudging tools to keep learning on track." },
+    { title: "Safe & Focused", description: "Runs only eMi — no other apps, ads, or distractions." },
+    { title: "Multilingual & Inclusive", description: "Accessible for all children, regardless of language, background, or needs." },
   ],
 }: FeaturesSectionProps) {
   return (
@@ -81,11 +54,7 @@ export default function FeaturesSection({
           <Stack spacing={4} alignItems="center" textAlign="center">
             <Typography
               variant="h3"
-              sx={{
-                fontWeight: 800,
-                color: "#FF8C32",
-                letterSpacing: 0.2,
-              }}
+              sx={{ fontWeight: 800, color: "#FF8C32", letterSpacing: 0.2 }}
             >
               {heading}
             </Typography>

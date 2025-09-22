@@ -1,5 +1,3 @@
-// src/components/WhyItMatters.tsx
-import React from "react";
 import {
   Box,
   Container,
@@ -8,7 +6,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 export type Feature = {
   title: string;
@@ -24,13 +22,14 @@ export type WhyItMattersProps = {
 
 const MotionPaper = motion(Paper);
 const MotionBox = motion(Box);
+const MotionItem = motion(Box);
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0, y: 12 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 10 },
   show: (i: number) => ({
     opacity: 1,
@@ -138,14 +137,18 @@ export default function WhyItMatters({
             }}
           >
             {features.map((f, i) => (
-              <motion.div
+              <MotionItem
                 key={i}
                 variants={itemVariants}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
                 custom={i}
-                style={{ flex: 1 }}
+                sx={{
+                  flex: "1 1 320px",
+                  minWidth: { xs: "100%", sm: 320 },
+                  maxWidth: { md: "33.333%" },
+                }}
               >
                 <Stack spacing={1.5} textAlign="left">
                   <Typography variant="h6" sx={{ fontWeight: 700 }}>
@@ -155,7 +158,7 @@ export default function WhyItMatters({
                     {f.description}
                   </Typography>
                 </Stack>
-              </motion.div>
+              </MotionItem>
             ))}
           </Box>
         </MotionBox>

@@ -1,7 +1,6 @@
-// src/components/MascotSection.tsx
-import React from "react";
-import { Box, Container, Stack, Typography, useTheme, Paper } from "@mui/material";
-import { motion } from "framer-motion";
+import { Box, Container, Stack, Typography } from "@mui/material";
+import { motion, easeOut } from "framer-motion";
+import type { Variants, TargetAndTransition } from "framer-motion";
 
 export type MascotSectionProps = {
   heading?: string;
@@ -13,22 +12,23 @@ export type MascotSectionProps = {
 };
 
 const MotionBox = motion(Box);
-const MotionPaper = motion(Paper);
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+const sectionVariants: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  show: (i: number): TargetAndTransition => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.1 + i * 0.06, duration: 0.4, ease: easeOut },
+  }),
 };
 
 export default function MascotSection({
   heading = "A friend who guides, cheers, and grows with the kid.",
   mascotImg,
   mascotAlt = "Mascot",
-  speech = "Hello, friend! Shall we play?",
   leftText = "Learning with eMi is never a solo journey. From the very first tap, each child chooses their own mascot — a friendly buddy who stays by their side on every page.",
   rightText = "Whenever they feel stuck, the mascot is there: offering gentle hints, cheering small victories, and keeping spirits high. It motivates without pressure, guiding children step by step in a way that feels fun and safe. What makes it magical is that the mascot learns with the child. It adapts to their pace, style, and mood — becoming a trusted companion who knows when to encourage, when to guide, and when to celebrate. For preschoolers, that means every learning moment feels like playtime with a friend who truly understands them.",
 }: MascotSectionProps) {
-  const theme = useTheme();
 
   return (
     <Box

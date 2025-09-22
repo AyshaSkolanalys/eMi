@@ -1,6 +1,8 @@
 // src/components/WhatsInside.tsx
 import { Box, Container, Typography } from "@mui/material";
-import { motion } from "framer-motion";
+import type { Variants, TargetAndTransition } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
+
 
 export type WhatsInsideProps = {
   title?: string;
@@ -8,9 +10,13 @@ export type WhatsInsideProps = {
 
 const MotionBox = motion(Box);
 
-const variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+const variants: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  show: (i: number): TargetAndTransition => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.1 + i * 0.06, duration: 0.4, ease: easeOut },
+  }),
 };
 
 export default function StyledTitle({
