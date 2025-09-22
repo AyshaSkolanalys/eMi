@@ -1,0 +1,105 @@
+// src/components/MascotSection.tsx
+import React from "react";
+import { Box, Container, Stack, Typography, useTheme, Paper } from "@mui/material";
+import { motion } from "framer-motion";
+
+export type MascotSectionProps = {
+  heading?: string;
+  mascotImg: string; // imported image
+  mascotAlt?: string;
+  speech?: string;
+  leftText?: string;
+  rightText?: string;
+};
+
+const MotionBox = motion(Box);
+const MotionPaper = motion(Paper);
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+export default function MascotSection({
+  heading = "A friend who guides, cheers, and grows with the kid.",
+  mascotImg,
+  mascotAlt = "Mascot",
+  speech = "Hello, friend! Shall we play?",
+  leftText = "Learning with eMi is never a solo journey. From the very first tap, each child chooses their own mascot — a friendly buddy who stays by their side on every page.",
+  rightText = "Whenever they feel stuck, the mascot is there: offering gentle hints, cheering small victories, and keeping spirits high. It motivates without pressure, guiding children step by step in a way that feels fun and safe. What makes it magical is that the mascot learns with the child. It adapts to their pace, style, and mood — becoming a trusted companion who knows when to encourage, when to guide, and when to celebrate. For preschoolers, that means every learning moment feels like playtime with a friend who truly understands them.",
+}: MascotSectionProps) {
+  const theme = useTheme();
+
+  return (
+    <Box
+      component="section"
+      sx={{
+        py: { xs: 8, md: 12 },
+        background: "linear-gradient(180deg, #0D1117 0%, #0B0F14 100%)",
+      }}
+    >
+      <Container maxWidth="lg">
+        <MotionBox variants={sectionVariants} initial="hidden" animate="show">
+          {/* Heading */}
+          <Typography
+            variant="h4"
+            align="center"
+            sx={{ fontWeight: 800, color: "#FF8C32", mb: { xs: 4, md: 6 } }}
+          >
+            {heading}
+          </Typography>
+
+          {/* Mascot with speech */}
+          <Stack alignItems="center" sx={{ mb: { xs: 6, md: 8 } }}>
+            <Box sx={{ position: "relative", display: "inline-block" }}>
+            
+
+              <Box
+                component="img"
+                src={mascotImg}
+                alt={mascotAlt}
+                sx={{
+                  width: { xs: 160, md: 220 },
+                  height: "auto",
+                  display: "block",
+                  mx: "auto",
+                }}
+              />
+            </Box>
+          </Stack>
+
+          {/* Two-column text */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: { xs: 3, md: 6 },
+            }}
+          >
+            <Typography
+              variant="body1"
+              sx={{
+                flex: 1,
+                fontStyle: "italic",
+                color: "text.secondary",
+              }}
+            >
+              {leftText}
+            </Typography>
+
+            <Typography
+              variant="body2"
+              sx={{
+                flex: 1,
+                color: "text.secondary",
+                lineHeight: 1.6,
+              }}
+            >
+              {rightText}
+            </Typography>
+          </Box>
+        </MotionBox>
+      </Container>
+    </Box>
+  );
+}

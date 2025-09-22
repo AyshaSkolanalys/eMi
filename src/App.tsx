@@ -4,6 +4,21 @@ import heroBg from './assets/images/banner.jpg'
 import emiLogo from './assets/images/logo.svg'
 import AdaptiveSection from './components/AdaptiveSection'
 import CorePillars from './components/CorePillars'
+import HowItWorks from './components/HowItWorks'
+import HowItWorksIllustration from './assets/images/studentGroup.png'
+import WhyItMattersIllustration from './assets/images/whyItMatters.png'
+import WhyItMatters from './components/WhyItMatters'
+import StyledTitle from './components/StyledTitle'
+
+import CurriculumBackedSection from './components/CurriculumBackedSection'
+import FeaturesSection from './components/FeaturesSection'
+import BenefitsSection from './components/BenefitsSection'
+import MascotBear from './assets/images/mascot.png'
+import MascotSection from './components/MascotSection'
+import WhatsNext from './components/WhatsNext'
+import EmiImage from './assets/images/emi.png'
+import FromTheMakers from './components/FromTheMakers'
+import TeamSection from './components/TeamSection'
 
 function App() {
 
@@ -16,6 +31,22 @@ function App() {
       />
       <AdaptiveSection />
       <CorePillars />
+      <HowItWorks  imageSrc={HowItWorksIllustration}/>
+      <WhyItMatters imageSrc={WhyItMattersIllustration} />
+      <StyledTitle title="What's Inside" />
+      <CurriculumBackedSection />
+      <FeaturesSection />
+      <BenefitsSection />
+      <StyledTitle title="Meet the Mascot" />
+      <MascotSection mascotImg={MascotBear} />
+      <WhatsNext
+      mascotSrc={EmiImage}
+      onPlayClick={() => console.log("Play!")}
+      onCtaClick={() => console.log("Open contact")}
+      />
+      <StyledTitle title="About Us" />
+      <FromTheMakers />
+      <TeamSection />
     </>
   )
 }
