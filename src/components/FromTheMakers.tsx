@@ -13,6 +13,10 @@ import type { Variants, TargetAndTransition } from "framer-motion";
 
 import SkolanalysIllustration from "../assets/images/skolanalys-illustration.png";
 import MyranScreenshot from "../assets/images/myran-screenshot.png";
+import { subtitleItalicSx } from "../styles/HowItWorks.styles";
+import { cardTitleSx } from "../styles/CorePillars.styles";
+import { para1Sx } from "../styles/Hero.styles";
+import { para4Sx } from "../styles/FeaturesSection.styles";
 
 type MakerItem = {
   logoSrc?: string;
@@ -56,11 +60,11 @@ export default function FromTheMakers({
     <>
       From the makers of{" "}
       <Box component="span" sx={{ color: "#4EA3FF", fontWeight: 600 }}>
-        Skolanalys
+         Skolanalys
       </Box>{" "}
       and{" "}
       <Box component="span" sx={{ color: "#C874FF", fontWeight: 600 }}>
-        Myran
+         Myran
       </Box>
       .
     </>
@@ -104,10 +108,10 @@ export default function FromTheMakers({
         {/* Intro */}
         <MotionBox variants={appear} initial="hidden" animate="show">
           <Stack spacing={1.2} alignItems="center" textAlign="center" sx={{ mb: { xs: 6, md: 8 } }}>
-            <Typography variant="h6" sx={{ fontStyle: "italic", opacity: 0.95, maxWidth: 900 }}>
+            <Typography variant="h6" sx={subtitleItalicSx}>
               {introTop}
             </Typography>
-            <Typography variant="h6" sx={{ fontStyle: "italic", opacity: 0.8, maxWidth: 900 }}>
+            <Typography variant="h6" sx={subtitleItalicSx}>
               {introBottom}
             </Typography>
           </Stack>
@@ -135,11 +139,11 @@ export default function FromTheMakers({
                   )}
                 </Stack>
 
-                <Typography variant="h5" sx={{ fontWeight: 700, lineHeight: 1.25 }}>
+                <Typography variant="h5" sx={cardTitleSx}>
                   {it.title}
                 </Typography>
 
-                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                <Typography variant="body2" color="text.secondary" sx={{...para1Sx, color:'#FFFFFF80'}}>
                   {it.description}
                 </Typography>
 
@@ -152,18 +156,18 @@ export default function FromTheMakers({
                       size="small"
                       variant="contained"
                       sx={{
+                        ...para4Sx,
                         borderRadius: 999,
                         px: 2.2,
                         py: 0.6,
                         backgroundColor:
-                          theme.palette.mode === "dark" ? "#14171A" : "#111",
+                         theme.palette.mode === "dark" ? "#1A1F24" : "#000",
+                         
                         color: "#fff",
-                        textTransform: "none",
-                        fontWeight: 600,
                         boxShadow: "none",
                         "&:hover": {
                           backgroundColor:
-                            theme.palette.mode === "dark" ? "#1A1F24" : "#000",
+                             theme.palette.mode === "dark" ? "#14171A" : "#111",
                           boxShadow: "none",
                         },
                       }}

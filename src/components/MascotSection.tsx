@@ -1,6 +1,8 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { motion, easeOut } from "framer-motion";
 import type { Variants, TargetAndTransition } from "framer-motion";
+import { titleSx } from "../styles/AdaptiveSection.styles";
+import { para3Sx, subtitleItalicLeftSx } from "../styles/MascotSection.styles";
 
 export type MascotSectionProps = {
   heading?: string;
@@ -44,7 +46,7 @@ export default function MascotSection({
           <Typography
             variant="h4"
             align="center"
-            sx={{ fontWeight: 800, color: "#FF8C32", mb: { xs: 4, md: 6 } }}
+            sx={titleSx}
           >
             {heading}
           </Typography>
@@ -78,10 +80,8 @@ export default function MascotSection({
           >
             <Typography
               variant="body1"
-              sx={{
-                flex: 1,
-                fontStyle: "italic",
-                color: "text.secondary",
+              sx={{...subtitleItalicLeftSx,
+                flex: 1
               }}
             >
               {leftText}
@@ -90,8 +90,8 @@ export default function MascotSection({
             <Typography
               variant="body2"
               sx={{
+                ...para3Sx,
                 flex: 1,
-                color: "text.secondary",
                 lineHeight: 1.6,
               }}
             >

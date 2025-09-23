@@ -30,21 +30,22 @@ function App() {
         onRequestDemo={() => console.log('Request Demo clicked')}
       />
       <AdaptiveSection />
+      <StyledTitle title="Discover eMi" fontColor='#FFFFFF1A' id='discover'/>
       <CorePillars />
       <HowItWorks  imageSrc={HowItWorksIllustration}/>
       <WhyItMatters imageSrc={WhyItMattersIllustration} />
-      <StyledTitle title="What's Inside" />
+      <StyledTitle title="What's Inside" fontColor="#00000033" id='inside'/>
       <CurriculumBackedSection />
       <FeaturesSection />
       <BenefitsSection />
-      <StyledTitle title="Meet the Mascot" />
+      <StyledTitle title="Meet the Mascot" fontColor="#FFFFFF1A" id='mascot'/>
       <MascotSection mascotImg={MascotBear} />
       <WhatsNext
       mascotSrc={EmiImage}
       onPlayClick={() => console.log("Play!")}
       onCtaClick={() => console.log("Open contact")}
       />
-      <StyledTitle title="About Us" />
+      <StyledTitle title="About Us" fontColor='#FFFFFF1A' id='about'/>
       <FromTheMakers />
       <TeamSection />
     </>

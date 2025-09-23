@@ -11,6 +11,8 @@ import ChildrenImg from '../assets/images/children.png';
 import TeachersImg from '../assets/images/teachers.png';
 import ParentsImg from '../assets/images/parents.png';
 import type { Variants, TargetAndTransition } from "framer-motion";
+import { titleSx } from "../styles/AdaptiveSection.styles";
+import { cardTitleSx } from "../styles/CorePillars.styles";
 
 type BenefitItem = {
     imageSrc: string;
@@ -96,7 +98,7 @@ export default function BenefitsSection({
                     <Typography
                         variant="h3"
                         align="center"
-                        sx={{ fontWeight: 800, color: "#FF8C32", letterSpacing: 0.2, mb: { xs: 4, md: 6 } }}
+                        sx={titleSx}
                     >
                         {heading}
                     </Typography>
@@ -118,7 +120,7 @@ export default function BenefitsSection({
                                 custom={i}
                                 sx={{ flex: 1 }}
                             >
-                                <Stack spacing={2}>
+                                <Stack spacing={2}  alignItems="baseline">
                                     <MotionPaper
                                         whileHover={{ scale: 1.02 }}
                                         transition={{ type: "spring", stiffness: 140, damping: 16 }}
@@ -145,13 +147,13 @@ export default function BenefitsSection({
                                         />
                                     </MotionPaper>
 
-                                    <Typography variant="h5" sx={{ fontWeight: 700 }}>
+                                    <Typography variant="h5" sx={cardTitleSx}>
                                         {it.title}
                                     </Typography>
 
                                     <Stack spacing={1.2}>
                                         {it.points.map((p, idx) => (
-                                            <Typography key={idx} variant="body2" color="text.secondary">
+                                            <Typography key={idx} variant="body2" sx={{fontFamily:'Inter Variable', fontSize:'18px', color:'#ffffff80', textAlign: 'left'}}>
                                                 {p}
                                             </Typography>
                                         ))}

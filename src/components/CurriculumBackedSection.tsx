@@ -13,6 +13,10 @@ import type { Variants, TargetAndTransition } from "framer-motion";
 import LangImg from "../assets/images/lang.jpg";
 import MathImg from "../assets/images/math.jpg";
 import SocialImg from "../assets/images/social.jpg";
+import { titleSx } from "../styles/AdaptiveSection.styles";
+import { subtitleItalicSx } from "../styles/HowItWorks.styles";
+import { para1Sx } from "../styles/Hero.styles";
+import { cardTitleSx } from "../styles/CorePillars.styles";
 
 type Pillar = {
   imageSrc: string; // import & pass in
@@ -94,26 +98,21 @@ export default function CurriculumBackedSection({
           <Stack spacing={2.5} alignItems="center" textAlign="center">
             <Typography
               variant="h3"
-              sx={{ fontWeight: 800, color: "#FF8C32", letterSpacing: 0.2 }}
+              sx={titleSx}
             >
               {heading}
             </Typography>
 
             <Typography
               variant="h6"
-              sx={{ fontStyle: "italic", maxWidth: 900, opacity: 0.95 }}
+              sx={subtitleItalicSx}
             >
               {subheading}
             </Typography>
 
             <Typography
               variant="body2"
-              sx={{
-                color: "text.secondary",
-                opacity: 0.8,
-                maxWidth: 900,
-                mt: { xs: 1, md: 2 },
-              }}
+              sx={{...para1Sx, color:"#ffffff80"}}
             >
               {thinNote}
             </Typography>
@@ -138,7 +137,7 @@ export default function CurriculumBackedSection({
                 custom={i}
                 style={{ flex: 1 }}
               >
-                <Stack spacing={1.5} textAlign="left">
+                <Stack spacing={1.5} textAlign="left" alignItems="baseline">
                   <MotionPaper
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 140, damping: 16 }}
@@ -165,10 +164,10 @@ export default function CurriculumBackedSection({
                     />
                   </MotionPaper>
 
-                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                  <Typography variant="h6" sx={{...cardTitleSx, textAlign:'left'}}>
                     {p.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{fontFamily:'Inter Variable', fontSize:'18px', color:'#ffffff80'}}>
                     {p.description}
                   </Typography>
                 </Stack>

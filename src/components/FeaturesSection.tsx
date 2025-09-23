@@ -2,6 +2,8 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import type { Variants, TargetAndTransition } from "framer-motion";
+import { titleSx } from "../styles/AdaptiveSection.styles";
+import { body3Sx, para4Sx } from "../styles/FeaturesSection.styles";
 
 export type Feature = {
   title: string;
@@ -54,7 +56,7 @@ export default function FeaturesSection({
           <Stack spacing={4} alignItems="center" textAlign="center">
             <Typography
               variant="h3"
-              sx={{ fontWeight: 800, color: "#FF8C32", letterSpacing: 0.2 }}
+              sx={titleSx}
             >
               {heading}
             </Typography>
@@ -80,10 +82,10 @@ export default function FeaturesSection({
                 style={{ flex: "1 1 280px", maxWidth: "calc(33.33% - 16px)" }}
               >
                 <Stack spacing={1.2} textAlign="left">
-                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                  <Typography variant="h6" sx={body3Sx}>
                     {f.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={para4Sx}>
                     {f.description}
                   </Typography>
                 </Stack>

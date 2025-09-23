@@ -10,6 +10,10 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import type { Variants, TargetAndTransition } from "framer-motion";
+import { titleSx } from "../styles/AdaptiveSection.styles";
+import { subtitleItalicSx } from "../styles/HowItWorks.styles";
+import { para1Sx } from "../styles/Hero.styles";
+import { cardTitleSx } from "../styles/CorePillars.styles";
 
 export type Feature = {
   title: string;
@@ -103,12 +107,12 @@ export default function HowItWorks({
             <Stack spacing={3} alignItems="center" textAlign="center">
               <Typography
                 variant="h3"
-                sx={{ fontWeight: 800, letterSpacing: 0.2, color: "#FF8C32" }}
+                sx={titleSx}
               >
                 {title}
               </Typography>
 
-              <Typography variant="h6" sx={{ fontStyle: "italic", opacity: 0.9 }}>
+              <Typography variant="h6" sx={subtitleItalicSx}>
                 {subtitle}
               </Typography>
 
@@ -151,12 +155,10 @@ export default function HowItWorks({
                 }}
               />
 
-              <Typography variant="body1" sx={{ color: "text.secondary", maxWidth: 820 }}>
+              <Typography variant="body1" sx={{...para1Sx, color:'#ffffff80'}}>
                 {blurb}
               </Typography>
             </Stack>
-
-            {/* Features — no Grid, pure flexbox */}
             <Box
               sx={{
                 mt: { xs: 2, md: 4 },
@@ -175,15 +177,15 @@ export default function HowItWorks({
                   custom={i}
                   sx={{
                     flex: "1 1 100%",
-                    maxWidth: { xs: "100%", md: "50%" }, // 2 per row on md+
+                    maxWidth: { xs: "100%", md: "45%" },
                     pr: { md: 1 },
                   }}
                 >
-                  <Stack spacing={1.2}>
-                    <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                  <Stack spacing={1.2} alignItems="baseline">
+                    <Typography variant="h6" sx={cardTitleSx}>
                       {f.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{...para1Sx, color:'#ffffff80', textAlign:'left'}}>
                       {f.description}
                     </Typography>
                   </Stack>
