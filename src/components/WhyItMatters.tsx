@@ -7,6 +7,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { motion, type Variants } from "framer-motion";
+import { titleSx } from "../styles/AdaptiveSection.styles";
+import { cardTitleSx } from "../styles/CorePillars.styles";
 
 export type Feature = {
   title: string;
@@ -54,11 +56,11 @@ export default function WhyItMatters({
         <>
           Technology now makes personalization possible, in a safe and structured
           way. <br />
-          <u>
+        
             With adaptive AI, curriculum-aligned content, and engaging
             activities, digital tools can finally support teachers, instead of
             adding more work.
-          </u>
+        
         </>
       ),
     },
@@ -66,13 +68,13 @@ export default function WhyItMatters({
       title: "The eMi Difference",
       description: (
         <>
-          <strong>For Children:</strong> Learn at their own pace with a mascot
+         For Children: Learn at their own pace with a mascot
           that guides, motivates, and celebrates progress. <br />
           <br />
-          <strong>For Teachers:</strong> Real-time tracking and feedback lighten
+         For Teachers: Real-time tracking and feedback lighten
           the workload and free time for care. <br />
           <br />
-          <strong>For Schools & Parents:</strong> Curriculum-aligned,
+         For Schools & Parents: Curriculum-aligned,
           multilingual, and offline-first — making eMi inclusive and reliable.
         </>
       ),
@@ -94,7 +96,7 @@ export default function WhyItMatters({
           <Stack spacing={3} alignItems="center" textAlign="center">
             <Typography
               variant="h3"
-              sx={{ fontWeight: 800, color: "#FF8C32", letterSpacing: 0.2 }}
+              sx={titleSx}
             >
               {title}
             </Typography>
@@ -150,11 +152,11 @@ export default function WhyItMatters({
                   maxWidth: { md: "33.333%" },
                 }}
               >
-                <Stack spacing={1.5} textAlign="left">
-                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                <Stack spacing={1.5} textAlign="left" alignItems="baseline">
+                  <Typography variant="h6" sx={cardTitleSx}>
                     {f.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{fontFamily:'Inter Variable', fontSize:'18px', color:'#ffffff80'}}>
                     {f.description}
                   </Typography>
                 </Stack>

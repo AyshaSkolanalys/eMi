@@ -1,131 +1,84 @@
 import React from 'react'
 import {
-  AppBar,
-  Toolbar,
-  Container,
-  Box,
-  Button,
-  IconButton,
-  Drawer,
-  List,
-  ListItemButton,
-  Link as MLink,
-  Stack,
-  Typography,
+  AppBar, Toolbar, Container, Box, Button, IconButton, Drawer, List, ListItemButton, Link as MLink, Stack, Typography,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import { motion } from 'framer-motion'
+import {
+  headlineSx, para1Sx, pillGradientSx, ctaButtonSx,
+  heroRootSx, bgImageSx, vignetteSx, appBarSx, heroContainerSx, logoImgSx,
+  para2Sx,
+} from '../styles/Hero.styles'
 
-type LinkItem = { label: string; href: string }
-
-const LINKS: LinkItem[] = [
+const LINKS = [
   { label: 'Discover eMi', href: '#discover' },
   { label: 'Inside eMi', href: '#inside' },
   { label: 'Meet the Mascot', href: '#mascot' },
   { label: "What’s Next", href: '#next' },
   { label: 'About us', href: '#about' },
-]
+] as const
+
+const NAV_OFFSET = 72 // Toolbar height
 
 export default function HeroBanner({
   bgSrc,
   logoSrc,
   onRequestDemo,
-}: {
-  bgSrc: string
-  logoSrc: string
-  onRequestDemo?: () => void
-}) {
+}: { bgSrc: string; logoSrc: string; onRequestDemo?: () => void }) {
   const [open, setOpen] = React.useState(false)
 
-  const linkStyles = {
-    color: 'common.white',
-    opacity: 0.95,
-    textDecoration: 'none',
-    fontWeight: 500,
-    fontSize: 14,
-    '&:hover': { opacity: 1, textDecoration: 'none' },
-  } as const
-
-  const pillGradient = {
-    px: 3,
-    py: 1,
-    borderRadius: 999,
-    color: '#fff',
-    fontWeight: 600,
-    textTransform: 'none' as const,
-    background: 'linear-gradient(135deg, #FFA726 0%, #FB8C00 50%, #F57C00 100%)',
-    boxShadow: '0 6px 16px rgba(245,124,0,0.35)',
-    '&:hover': {
-      background:
-        'linear-gradient(135deg, #FFB74D 0%, #FF9800 50%, #F57C00 100%)',
-      boxShadow: '0 8px 20px rgba(245,124,0,0.45)',
-    },
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault()
+    const id = href.replace('#', '')
+    const el = document.getElementById(id)
+    if (!el) return
+    const y = el.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET
+    window.scrollTo({ top: y, behavior: 'smooth' })
+    history.pushState(null, '', href) // optional: sync URL
   }
 
   return (
-    <Box
-      position="relative"
-      sx={{
-        minHeight: '100vh',  // full viewport height
-        width: '100%',       // full width
-        overflow: 'hidden',
-        m: 0,
-      }}
-    >
-      {/* FULL-WIDTH BACKGROUND */}
+    <Box position="relative" sx={heroRootSx}>
+      {/* FULL-WIDTH BACKGROUND — ignore pointer events so it never blocks clicks */}
       <Box
         aria-hidden
-        sx={{
-          position: 'absolute',
-          inset: 0,            // cover entire hero
-          width: '100%',
-          height: '100%',
-          backgroundImage: `url(${bgSrc})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          zIndex: 0,
-        }}
+        sx={{ ...bgImageSx, backgroundImage: `url(${bgSrc})`, pointerEvents: 'none', zIndex: 0 }}
       />
 
-      {/* OVERLAY / VIGNETTE */}
-      <Box
-        aria-hidden
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          background:
-            'radial-gradient(100% 600px at 50% 60%, rgba(0,0,0,0.15), rgba(0,0,0,0.75))',
-          zIndex: 1,
-        }}
-      />
+      {/* OVERLAY / VIGNETTE — also ignore pointer events */}
+      <Box aria-hidden sx={{ ...vignetteSx, pointerEvents: 'none', zIndex: 1 }} />
 
-      {/* NAVBAR OVER BANNER */}
+      {/* NAVBAR OVER BANNER — ensure it's above overlays */}
       <AppBar
         position="absolute"
         elevation={0}
-        sx={{ top: 0, background: 'transparent', color: 'common.white', zIndex: 2 }}
+        sx={(theme) => ({ ...appBarSx, zIndex: theme.zIndex.appBar + 2 })}
       >
         <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ minHeight: 72 }}>
-            {/* centered links (desktop) */}
+          <Toolbar disableGutters sx={{ minHeight: NAV_OFFSET }}>
             <Box component="nav" sx={{ display: { xs: 'none', md: 'flex' }, gap: 4, mx: 'auto' }}>
-              {LINKS.map((l) => (
-                <MLink key={l.href} href={l.href} sx={linkStyles}>
+              {LINKS.map(l => (
+                <MLink
+                  key={l.href}
+                  href={l.href}
+                  onClick={(e) => handleNavClick(e, l.href)}
+                  sx={{ ...para2Sx, cursor: 'pointer', pointerEvents: 'auto' }}
+                >
                   {l.label}
                 </MLink>
               ))}
             </Box>
 
-            {/* contact (desktop) */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, ml: 'auto' }}>
-              <Button href="#contact" sx={pillGradient}>
+              <Button
+                href="#contact"
+                sx={pillGradientSx}
+                onClick={(e) => handleNavClick(e, '#contact')}
+              >
                 Contact
               </Button>
             </Box>
 
-            {/* hamburger (mobile) */}
             <IconButton
               onClick={() => setOpen(true)}
               sx={{ display: { xs: 'inline-flex', md: 'none' }, ml: 'auto', color: 'common.white' }}
@@ -141,18 +94,31 @@ export default function HeroBanner({
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <Box sx={{ width: 300, p: 2 }}>
           <List>
-            {LINKS.map((l) => (
+            {LINKS.map(l => (
               <ListItemButton
                 key={l.href}
                 component="a"
                 href={l.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault()
+                  setOpen(false)
+                  requestAnimationFrame(() => handleNavClick(e as any, l.href))
+                }}
               >
                 {l.label}
               </ListItemButton>
             ))}
             <Box sx={{ p: 2 }}>
-              <Button fullWidth href="#contact" sx={pillGradient} onClick={() => setOpen(false)}>
+              <Button
+                fullWidth
+                href="#contact"
+                sx={pillGradientSx}
+                onClick={(e) => {
+                  e.preventDefault()
+                  setOpen(false)
+                  requestAnimationFrame(() => handleNavClick(e as any, '#contact'))
+                }}
+              >
                 Contact
               </Button>
             </Box>
@@ -160,19 +126,8 @@ export default function HeroBanner({
         </Box>
       </Drawer>
 
-      {/* HERO CONTENT (CONSTRAINED TO 1200PX) */}
-      <Container
-        maxWidth="lg"
-        sx={{
-          position: 'relative',
-          zIndex: 2,
-          minHeight: '100vh',
-          display: 'grid',
-          placeItems: 'center',
-          textAlign: 'center',
-          py: 0,
-        }}
-      >
+      {/* HERO CONTENT */}
+      <Container maxWidth="lg" sx={heroContainerSx}>
         <Stack
           spacing={3}
           component={motion.div}
@@ -181,57 +136,19 @@ export default function HeroBanner({
           transition={{ duration: 0.8 }}
           sx={{ maxWidth: 980, mx: 'auto' }}
         >
-          {/* eMi LOGO (IMAGE) */}
-          <Box
-            component="img"
-            src={logoSrc}
-            alt="eMi logo"
-            sx={{
-              mx: 'auto',
-              width: { xs: 84, md: 120 },
-              height: 'auto',
-              mb: { xs: 1, md: 2 },
-              filter: 'drop-shadow(0px 8px 16px rgba(0,0,0,0.4))',
-              alignSelf:'center'
-            }}
-          />
+          <Box component="img" src={logoSrc} alt="eMi logo" sx={logoImgSx} />
 
-          {/* HEADLINE */}
-          <Typography
-            variant="h1"
-            sx={{
-              color: 'common.white',
-              fontWeight: 900,
-              letterSpacing: { xs: -0.5, md: -1 },
-              lineHeight: 1.05,
-              fontSize: { xs: 38, sm: 52, md: 80 },
-            }}
-          >
+          <Typography variant="h1" sx={headlineSx}>
             Preschool’s <Box component="span" sx={{ display: 'block' }}>New Best Buddy</Box>
           </Typography>
 
-          {/* SUBHEAD */}
-          <Typography
-            variant="h6"
-            sx={{
-              color: 'rgba(255,255,255,0.9)',
-              fontWeight: 400,
-              maxWidth: 900,
-              mx: 'auto',
-            }}
-          >
+          <Typography variant="h6" sx={para1Sx}>
             An AI-powered companion that supports little learners in language, math, and emotional
             growth — while giving teachers more time to do what they do best: care.
           </Typography>
 
-          {/* CTA */}
           <Box>
-            <Button
-              size="large"
-              sx={{ ...pillGradient, px: 4, py: 1.2, fontSize: 16, mt: 1 }}
-              onClick={onRequestDemo}
-              href="#request-demo"
-            >
+            <Button size="large" sx={ctaButtonSx} onClick={onRequestDemo} href="#request-demo">
               Request Demo
             </Button>
           </Box>

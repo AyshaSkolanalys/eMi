@@ -8,6 +8,9 @@ import FoxsyLogo from "../assets/images/foxsy.png";
 import AiLogo from "../assets/images/ai.png";
 import HelsingborgLogo from "../assets/images/helsingborg.png";
 import UniversityLogo from "../assets/images/university.png";
+import { titleSx } from "../styles/AdaptiveSection.styles";
+import { para1Sx } from "../styles/Hero.styles";
+import { body3Sx } from "../styles/FeaturesSection.styles";
 
 type Partner = {
   logoSrc: string;         // import and pass in
@@ -66,21 +69,21 @@ export default function TeamSection({
           <Stack spacing={2.5} alignItems="center" textAlign="center">
             <Typography
               variant="h4"
-              sx={{ fontWeight: 800, color: "#FF8C32", letterSpacing: 0.2 }}
+              sx={titleSx}
             >
               {title}
             </Typography>
 
             <Typography
               variant="body1"
-              sx={{ maxWidth: 860, color: "text.secondary", lineHeight: 1.7 }}
+              sx={{...para1Sx, color:'#19191999'}}
             >
               {description}
             </Typography>
 
             <Typography
               variant="subtitle2"
-              sx={{ mt: { xs: 3, md: 4 }, color: "text.secondary", opacity: 0.9 }}
+              sx={{...body3Sx, color:'#19191999'}}
             >
               {partnersLabel}
             </Typography>

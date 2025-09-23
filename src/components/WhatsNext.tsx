@@ -9,6 +9,9 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { titleSx } from "../styles/AdaptiveSection.styles";
+import { subtitleItalicSx } from "../styles/HowItWorks.styles";
+import { ctaButtonSx, para1Sx } from "../styles/Hero.styles";
 
 export type WhatsNextProps = {
   fadedHeading?: string;          // big ghost heading in the background
@@ -48,6 +51,7 @@ export default function WhatsNext({
 
   return (
     <Box
+    id='next'
       component="section"
       sx={{
         position: "relative",
@@ -120,7 +124,7 @@ export default function WhatsNext({
           <Typography
             variant="h4"
             align="center"
-            sx={{ fontWeight: 800, color: "#FF8C32", mb: { xs: 2, md: 2.5 } }}
+            sx={titleSx}
           >
             {productTitle}
           </Typography>
@@ -130,7 +134,7 @@ export default function WhatsNext({
             variant="h6"
             align="center"
             sx={{
-              fontStyle: "italic",
+             ...subtitleItalicSx,
               color: theme.palette.text.primary,
               opacity: 0.9,
               lineHeight: 1.6,
@@ -142,25 +146,12 @@ export default function WhatsNext({
 
           {/* Note + CTA */}
           <Stack spacing={2.5} alignItems="center">
-            <Typography variant="body2" sx={{ color: "text.secondary", opacity: 0.7 }}>
+            <Typography variant="body2" sx={{ ...para1Sx, color:'#0E1C2966'}}>
               {note}
             </Typography>
 
-            <Button
-              onClick={onCtaClick}
-              variant="contained"
-              size="large"
-              sx={{
-                borderRadius: 999,
-                px: 3.5,
-                py: 1.25,
-                backgroundColor: "#FF8C32",
-                "&:hover": { backgroundColor: "#ff7a10" },
-                color: "#111",
-                fontWeight: 700,
-                boxShadow: "none",
-              }}
-            >
+          
+             <Button size="large" sx={{...ctaButtonSx, width:'245px'}} onClick={onCtaClick} href="#request-demo">
               {ctaText}
             </Button>
           </Stack>

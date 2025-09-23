@@ -2,10 +2,13 @@
 import { Box, Container, Typography } from "@mui/material";
 import type { Variants, TargetAndTransition } from "framer-motion";
 import { motion, easeOut } from "framer-motion";
+import { headlineSx } from "../styles/Hero.styles";
 
 
 export type WhatsInsideProps = {
   title?: string;
+  fontColor?: string;
+  id?: string;
 };
 
 const MotionBox = motion(Box);
@@ -20,10 +23,13 @@ const variants: Variants = {
 };
 
 export default function StyledTitle({
-  title = "What’s Inside",
+  title,
+  fontColor,
+  id
 }: WhatsInsideProps) {
   return (
     <Box
+      id= {id}
       component="section"
       sx={{
         py: { xs: 10, md: 14 },
@@ -35,11 +41,7 @@ export default function StyledTitle({
         <MotionBox variants={variants} initial="hidden" animate="show">
           <Typography
             variant="h2"
-            sx={{
-              fontWeight: 800,
-              color: "rgba(255,255,255,0.08)", // subtle faded text look
-              fontSize: { xs: "2.5rem", md: "3.5rem" },
-            }}
+            sx={{...headlineSx, color: fontColor}}
           >
             {title}
           </Typography>
