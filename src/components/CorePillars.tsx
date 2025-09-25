@@ -1,33 +1,43 @@
-import { Box, Container, Typography, Paper } from '@mui/material'
-import { motion } from 'framer-motion'
-import { titleSx } from '../styles/AdaptiveSection.styles'
+import { Box, Container, Typography, Paper } from '@mui/material';
+import { motion } from 'framer-motion';
+import { titleSx } from '../styles/AdaptiveSection.styles';
 
-import CurriculumIcon from '../assets/images/curriculum.svg'
-import AIPoweredIcon from '../assets/images/poweredLearning.svg'
-import TeacherFriendlyIcon from '../assets/images/teacherFriendly.svg'
-import InclusiveIcon from '../assets/images/inclusive.svg'
+import CurriculumIcon from '../assets/images/curriculum.svg';
+import AIPoweredIcon from '../assets/images/poweredLearning.svg';
+import TeacherFriendlyIcon from '../assets/images/teacherFriendly.svg';
+import InclusiveIcon from '../assets/images/inclusive.svg';
 
 import {
-  sectionSx, panelSx, gridSx, cardPaperSx, cardStackSx,
-  iconWrapperSx, iconImgSx, cardTitleSx,
-  cardInitial, cardWhileInView, cardViewport, cardWhileHover, getCardTransition,
-} from '../styles/CorePillars.styles'
-import { para1Sx } from '../styles/Hero.styles'
+  sectionSx,
+  panelSx,
+  gridSx,
+  cardPaperSx,
+  cardStackSx,
+  iconWrapperSx,
+  iconImgSx,
+  cardTitleSx,
+  cardInitial,
+  cardWhileInView,
+  cardViewport,
+  cardWhileHover,
+  getCardTransition,
+} from '../styles/CorePillars.styles';
+import { para1Sx } from '../styles/Hero.styles';
 
 type Pillar = {
-  title: string
-  description: string
-  iconSrc?: string
-  alt?: string
-  Icon?: React.ElementType
-}
+  title: string;
+  description: string;
+  iconSrc?: string;
+  alt?: string;
+  Icon?: React.ElementType;
+};
 
 type CorePillarsProps = {
-  heading?: string
-  pillars?: Pillar[]
-}
+  heading?: string;
+  pillars?: Pillar[];
+};
 
-const MotionPaper = motion(Paper)
+const MotionPaper = motion(Paper);
 
 const defaultPillars: Pillar[] = [
   {
@@ -58,7 +68,7 @@ const defaultPillars: Pillar[] = [
     iconSrc: InclusiveIcon,
     alt: 'Inclusive for all',
   },
-]
+];
 
 export default function CorePillars({
   heading = 'Core Pillars of eMi',
@@ -97,7 +107,7 @@ export default function CorePillars({
                     {p.title}
                   </Typography>
 
-                  <Typography variant="body2" sx={{...para1Sx, color:'#FFFFFF80'}}>
+                  <Typography variant="body2" sx={{ ...para1Sx, color: '#FFFFFF80' }}>
                     {p.description}
                   </Typography>
                 </Box>
@@ -107,5 +117,5 @@ export default function CorePillars({
         </Paper>
       </Container>
     </Box>
-  )
+  );
 }

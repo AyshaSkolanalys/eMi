@@ -1,19 +1,11 @@
 // src/components/HowItWorks.tsx
-import {
-  Box,
-  Container,
-  Paper,
-  Stack,
-  Typography,
-  useTheme,
-  Divider,
-} from "@mui/material";
-import { motion } from "framer-motion";
-import type { Variants, TargetAndTransition } from "framer-motion";
-import { titleSx } from "../styles/AdaptiveSection.styles";
-import { subtitleItalicSx } from "../styles/HowItWorks.styles";
-import { para1Sx } from "../styles/Hero.styles";
-import { cardTitleSx } from "../styles/CorePillars.styles";
+import { Box, Container, Paper, Stack, Typography, useTheme, Divider } from '@mui/material';
+import { motion } from 'framer-motion';
+import type { Variants, TargetAndTransition } from 'framer-motion';
+import { titleSx } from '../styles/AdaptiveSection.styles';
+import { subtitleItalicSx } from '../styles/HowItWorks.styles';
+import { para1Sx } from '../styles/Hero.styles';
+import { cardTitleSx } from '../styles/CorePillars.styles';
 
 export type Feature = {
   title: string;
@@ -35,7 +27,7 @@ const MotionItem = motion(Box);
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
 const itemVariants: Variants = {
@@ -43,36 +35,36 @@ const itemVariants: Variants = {
   show: (i: number): TargetAndTransition => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.1 + i * 0.08, duration: 0.45, ease: "easeOut" },
+    transition: { delay: 0.1 + i * 0.08, duration: 0.45, ease: 'easeOut' },
   }),
 };
 
 export default function HowItWorks({
-  title = "How it Works",
-  subtitle = "Seamless for Teachers. Engaging for Kids.",
-  blurb = "eMi is designed to fit into any preschool classroom — no complicated setup, no distractions, just learning that feels like play.",
+  title = 'How it Works',
+  subtitle = 'Seamless for Teachers. Engaging for Kids.',
+  blurb = 'eMi is designed to fit into any preschool classroom — no complicated setup, no distractions, just learning that feels like play.',
   imageSrc,
-  imageAlt = "Kids learning with tablets",
+  imageAlt = 'Kids learning with tablets',
   features = [
     {
-      title: "Tablet in the Classroom",
+      title: 'Tablet in the Classroom',
       description:
-        "A dedicated iPad or Android tablet stays in the classroom, preloaded with eMi. It works fully offline, syncing progress once online.",
+        'A dedicated iPad or Android tablet stays in the classroom, preloaded with eMi. It works fully offline, syncing progress once online.',
     },
     {
-      title: "Play Adaptive Games",
+      title: 'Play Adaptive Games',
       description:
-        "Each child has their own profile. They choose their avatar and favorite mascot, who guides them through every activity.",
+        'Each child has their own profile. They choose their avatar and favorite mascot, who guides them through every activity.',
     },
     {
-      title: "Teacher Oversight",
+      title: 'Teacher Oversight',
       description:
-        "Teachers can track progress on the dashboard, see where each child needs help, and gently nudge unfinished tasks.",
+        'Teachers can track progress on the dashboard, see where each child needs help, and gently nudge unfinished tasks.',
     },
     {
-      title: "Always in Sync",
+      title: 'Always in Sync',
       description:
-        "All results are stored safely offline and sync automatically when the device connects to the internet.",
+        'All results are stored safely offline and sync automatically when the device connects to the internet.',
     },
   ],
 }: HowItWorksProps) {
@@ -83,36 +75,30 @@ export default function HowItWorks({
       component="section"
       sx={{
         py: { xs: 6, md: 10 },
-        background:
-          "radial-gradient(1200px 600px at 50% -200px, rgba(255,255,255,0.06), transparent), linear-gradient(180deg, #0D1117 0%, #0B0F14 100%)",
       }}
     >
       <Container maxWidth="lg">
         <MotionBox variants={containerVariants} initial="hidden" animate="show">
           <Paper
-            elevation={6}
+            elevation={0}
             sx={{
               p: { xs: 3, md: 5 },
-              borderRadius: 3,
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)",
-              border: "1px solid",
-              borderColor:
-                theme.palette.mode === "dark"
-                  ? "rgba(255,255,255,0.08)"
-                  : "rgba(0,0,0,0.08)",
-              backdropFilter: "blur(6px)",
+              background: 'transparent',
             }}
           >
             <Stack spacing={3} alignItems="center" textAlign="center">
-              <Typography
-                variant="h3"
-                sx={titleSx}
-              >
+              <Typography variant="h3" sx={titleSx}>
                 {title}
               </Typography>
 
-              <Typography variant="h6" sx={subtitleItalicSx}>
+              <Typography
+                variant="h6"
+                sx={{
+                  ...subtitleItalicSx,
+                  marginTop: '3.5rem !important',
+                  marginBottom: '3rem !important',
+                }}
+              >
                 {subtitle}
               </Typography>
 
@@ -120,14 +106,12 @@ export default function HowItWorks({
               <MotionPaper
                 layout
                 whileHover={{ scale: 1.01 }}
-                transition={{ type: "spring", stiffness: 120, damping: 16 }}
+                transition={{ type: 'spring', stiffness: 120, damping: 16 }}
                 elevation={0}
                 sx={{
-                  width: "100%",
-                  borderRadius: 3,
-                  overflow: "hidden",
-                  backgroundColor:
-                    theme.palette.mode === "dark" ? "#e9eef3" : "#f3f6fa",
+                  width: '100%',
+                  overflow: 'hidden',
+                  backgroundColor: 'transparent',
                 }}
               >
                 <Box
@@ -135,10 +119,10 @@ export default function HowItWorks({
                   src={imageSrc}
                   alt={imageAlt}
                   sx={{
-                    display: "block",
-                    width: "100%",
+                    display: 'block',
+                    width: '100%',
                     height: { xs: 220, sm: 280, md: 320 },
-                    objectFit: "cover",
+                    objectFit: 'cover',
                   }}
                 />
               </MotionPaper>
@@ -146,24 +130,30 @@ export default function HowItWorks({
               <Divider
                 flexItem
                 sx={{
-                  width: "100%",
+                  width: '100%',
                   opacity: 0.16,
                   borderColor:
-                    theme.palette.mode === "dark"
-                      ? "rgba(255,255,255,0.16)"
-                      : "rgba(0,0,0,0.12)",
+                    theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.12)',
                 }}
               />
 
-              <Typography variant="body1" sx={{...para1Sx, color:'#ffffff80'}}>
+              <Typography
+                variant="body1"
+                sx={{
+                  ...para1Sx,
+                  color: '#ffffff80',
+                  marginTop: '3rem !important',
+                  marginBottom: '3rem !important',
+                }}
+              >
                 {blurb}
               </Typography>
             </Stack>
             <Box
               sx={{
                 mt: { xs: 2, md: 4 },
-                display: "flex",
-                flexWrap: "wrap",
+                display: 'flex',
+                flexWrap: 'wrap',
                 gap: { xs: 3, md: 4 },
               }}
             >
@@ -176,8 +166,8 @@ export default function HowItWorks({
                   viewport={{ once: true, amount: 0.2 }}
                   custom={i}
                   sx={{
-                    flex: "1 1 100%",
-                    maxWidth: { xs: "100%", md: "45%" },
+                    flex: '1 1 100%',
+                    maxWidth: { xs: '100%', md: '45%' },
                     pr: { md: 1 },
                   }}
                 >
@@ -185,7 +175,16 @@ export default function HowItWorks({
                     <Typography variant="h6" sx={cardTitleSx}>
                       {f.title}
                     </Typography>
-                    <Typography variant="body2" sx={{...para1Sx, color:'#ffffff80', textAlign:'left'}}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        ...para1Sx,
+                        color: '#ffffff80',
+                        textAlign: 'left',
+                        marginBottom: '3rem !important',
+                        marginTop: '1rem !important',
+                      }}
+                    >
                       {f.description}
                     </Typography>
                   </Stack>
