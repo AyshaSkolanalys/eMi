@@ -1,9 +1,8 @@
 // src/components/WhatsInside.tsx
-import { Box, Container, Typography } from "@mui/material";
-import type { Variants, TargetAndTransition } from "framer-motion";
-import { motion, easeOut } from "framer-motion";
-import { headlineSx } from "../styles/Hero.styles";
-
+import { Box, Container, Typography } from '@mui/material';
+import type { Variants, TargetAndTransition } from 'framer-motion';
+import { motion, easeOut } from 'framer-motion';
+import { headlineSx } from '../styles/Hero.styles';
 
 export type WhatsInsideProps = {
   title?: string;
@@ -22,27 +21,19 @@ const variants: Variants = {
   }),
 };
 
-export default function StyledTitle({
-  title,
-  fontColor,
-  id
-}: WhatsInsideProps) {
+export default function StyledTitle({ title, fontColor, id }: WhatsInsideProps) {
   return (
     <Box
-      id= {id}
+      id={id}
       component="section"
       sx={{
-        py: { xs: 10, md: 14 },
-        textAlign: "center",
-        background: "linear-gradient(180deg, #1C2834 0%, #101820 100%)",
+        py: { xs: 10, md: '6rem' },
+        textAlign: 'center',
       }}
     >
       <Container maxWidth="lg">
         <MotionBox variants={variants} initial="hidden" animate="show">
-          <Typography
-            variant="h2"
-            sx={{...headlineSx, color: fontColor}}
-          >
+          <Typography variant="h2" sx={{ ...headlineSx, color: fontColor }}>
             {title}
           </Typography>
         </MotionBox>

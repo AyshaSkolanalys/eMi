@@ -1,6 +1,6 @@
-import { Box, Container, Typography } from '@mui/material'
-import { motion } from 'framer-motion'
-import adaptiveImage from '../assets/images/adaptive.png'
+import { Box, Container, Typography } from '@mui/material';
+import { motion } from 'framer-motion';
+import adaptiveImage from '../assets/images/adaptive.png';
 
 import {
   sectionSx,
@@ -8,18 +8,18 @@ import {
   titleSx,
   imageSx,
   imageMotionProps,
-} from '../styles/AdaptiveSection.styles'
-import { para1Sx } from '../styles/Hero.styles'
+} from '../styles/AdaptiveSection.styles';
+import { para1Sx } from '../styles/Hero.styles';
 
 export default function AdaptiveSection() {
   return (
-    <Box component="section" sx={sectionSx}>
+    <Box component="section" sx={sectionSx} id="adaptive">
       <Container maxWidth="lg" sx={containerSx}>
         <Typography variant="h3" component="h2" gutterBottom sx={titleSx}>
           Adaptive, safe, and built to grow with every child
         </Typography>
 
-        <Typography variant="body1" sx={{...para1Sx, color:'#FFFFFF80'}}>
+        <Typography variant="body1" sx={{ ...para1Sx, color: '#FFFFFF80', paddingTop: '2rem' }}>
           eMi is an AI-powered learning companion created for preschools. Running on a dedicated
           tablet with no distractions, it offers personalized games that nurture skills in math,
           language, and emotional growth. Each child has their own avatar, making it easy to pick up
@@ -33,9 +33,9 @@ export default function AdaptiveSection() {
           src={adaptiveImage}
           alt="eMi adaptive learning mockup"
           {...imageMotionProps}
-          sx={imageSx}
+          sx={{ ...imageSx, paddingTop: '4rem' }}
         />
       </Container>
     </Box>
-  )
+  );
 }

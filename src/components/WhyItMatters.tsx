@@ -1,14 +1,7 @@
-import {
-  Box,
-  Container,
-  Paper,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import { motion, type Variants } from "framer-motion";
-import { titleSx } from "../styles/AdaptiveSection.styles";
-import { cardTitleSx } from "../styles/CorePillars.styles";
+import { Box, Container, Paper, Stack, Typography, useTheme } from '@mui/material';
+import { motion, type Variants } from 'framer-motion';
+import { titleSx } from '../styles/AdaptiveSection.styles';
+import { cardTitleSx } from '../styles/CorePillars.styles';
 
 export type Feature = {
   title: string;
@@ -28,7 +21,7 @@ const MotionItem = motion(Box);
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
 const itemVariants: Variants = {
@@ -36,46 +29,42 @@ const itemVariants: Variants = {
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.1 + i * 0.1, duration: 0.45, ease: "easeOut" },
+    transition: { delay: 0.1 + i * 0.1, duration: 0.45, ease: 'easeOut' },
   }),
 };
 
 export default function WhyItMatters({
-  title = "Why It Matters",
+  title = 'Why It Matters',
   imageSrc,
-  imageAlt = "Illustration of kids and teachers",
+  imageAlt = 'Illustration of kids and teachers',
   features = [
     {
-      title: "The Challenge",
+      title: 'The Challenge',
       description:
-        "Preschool teachers manage many children at once, each with different strengths and needs. Some require extra support, others more challenge, and it’s difficult to give personalized attention to everyone. Regular tablets and apps add distractions, making focused learning even harder.",
+        'Preschool teachers manage many children at once, each with different strengths and needs. Some require extra support, others more challenge, and it’s difficult to give personalized attention to everyone. Regular tablets and apps add distractions, making focused learning even harder.',
     },
     {
-      title: "The Opportunity",
+      title: 'The Opportunity',
       description: (
         <>
-          Technology now makes personalization possible, in a safe and structured
-          way. <br />
-        
-            With adaptive AI, curriculum-aligned content, and engaging
-            activities, digital tools can finally support teachers, instead of
-            adding more work.
-        
+          Technology now makes personalization possible, in a safe and structured way. <br />
+          With adaptive AI, curriculum-aligned content, and engaging activities, digital tools can
+          finally support teachers, instead of adding more work.
         </>
       ),
     },
     {
-      title: "The eMi Difference",
+      title: 'The eMi Difference',
       description: (
         <>
-         For Children: Learn at their own pace with a mascot
-          that guides, motivates, and celebrates progress. <br />
+          For Children: Learn at their own pace with a mascot that guides, motivates, and celebrates
+          progress. <br />
           <br />
-         For Teachers: Real-time tracking and feedback lighten
-          the workload and free time for care. <br />
+          For Teachers: Real-time tracking and feedback lighten the workload and free time for care.{' '}
           <br />
-         For Schools & Parents: Curriculum-aligned,
-          multilingual, and offline-first — making eMi inclusive and reliable.
+          <br />
+          For Schools & Parents: Curriculum-aligned, multilingual, and offline-first — making eMi
+          inclusive and reliable.
         </>
       ),
     },
@@ -88,16 +77,12 @@ export default function WhyItMatters({
       component="section"
       sx={{
         py: { xs: 6, md: 10 },
-        background: "linear-gradient(180deg, #0D1117 0%, #0B0F14 100%)",
       }}
     >
       <Container maxWidth="lg">
         <MotionBox variants={containerVariants} initial="hidden" animate="show">
           <Stack spacing={3} alignItems="center" textAlign="center">
-            <Typography
-              variant="h3"
-              sx={titleSx}
-            >
+            <Typography variant="h3" sx={titleSx}>
               {title}
             </Typography>
 
@@ -105,14 +90,15 @@ export default function WhyItMatters({
             <MotionPaper
               layout
               whileHover={{ scale: 1.01 }}
-              transition={{ type: "spring", stiffness: 120, damping: 16 }}
+              transition={{ type: 'spring', stiffness: 120, damping: 16 }}
               elevation={0}
               sx={{
-                width: "100%",
+                width: '100%',
                 borderRadius: 3,
-                overflow: "hidden",
-                backgroundColor:
-                  theme.palette.mode === "dark" ? "#e9eef3" : "#f3f6fa",
+                overflow: 'hidden',
+                marginTop: '3rem !important',
+                marginBottom: '3rem !important',
+                backgroundColor: theme.palette.mode === 'dark' ? '#e9eef3' : '#f3f6fa',
               }}
             >
               <Box
@@ -120,10 +106,10 @@ export default function WhyItMatters({
                 src={imageSrc}
                 alt={imageAlt}
                 sx={{
-                  display: "block",
-                  width: "100%",
+                  display: 'block',
+                  width: '100%',
                   height: { xs: 200, sm: 260, md: 300 },
-                  objectFit: "cover",
+                  objectFit: 'cover',
                 }}
               />
             </MotionPaper>
@@ -133,8 +119,8 @@ export default function WhyItMatters({
           <Box
             sx={{
               mt: { xs: 4, md: 6 },
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
               gap: { xs: 4, md: 6 },
             }}
           >
@@ -147,16 +133,19 @@ export default function WhyItMatters({
                 viewport={{ once: true, amount: 0.2 }}
                 custom={i}
                 sx={{
-                  flex: "1 1 320px",
-                  minWidth: { xs: "100%", sm: 320 },
-                  maxWidth: { md: "33.333%" },
+                  flex: '1 1 320px',
+                  minWidth: { xs: '100%', sm: 320 },
+                  maxWidth: { md: '33.333%' },
                 }}
               >
                 <Stack spacing={1.5} textAlign="left" alignItems="baseline">
                   <Typography variant="h6" sx={cardTitleSx}>
                     {f.title}
                   </Typography>
-                  <Typography variant="body2" sx={{fontFamily:'Inter Variable', fontSize:'18px', color:'#ffffff80'}}>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontFamily: 'Inter Variable', fontSize: '18px', color: '#ffffff80' }}
+                  >
                     {f.description}
                   </Typography>
                 </Stack>

@@ -39,11 +39,19 @@
   color: #888;
 }
 
-body { margin: 0; }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   width: 100%;
   margin: 0;

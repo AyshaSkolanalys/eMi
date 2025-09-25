@@ -1,2 +1,6 @@
-:root { scroll-behavior: smooth; }
-[id] { scroll-margin-top: 72px; } /* same as NAV_OFFSET */
+:root {
+  scroll-behavior: smooth;
+}
+[id] {
+  scroll-margin-top: 72px;
+}

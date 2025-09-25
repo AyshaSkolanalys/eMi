@@ -1,25 +1,18 @@
 // src/components/CurriculumBackedSection.tsx
-import {
-  Box,
-  Container,
-  Paper,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import { motion } from "framer-motion";
-import type { Variants, TargetAndTransition } from "framer-motion";
+import { Box, Container, Paper, Stack, Typography, useTheme } from '@mui/material';
+import { motion } from 'framer-motion';
+import type { Variants, TargetAndTransition } from 'framer-motion';
 
-import LangImg from "../assets/images/lang.jpg";
-import MathImg from "../assets/images/math.jpg";
-import SocialImg from "../assets/images/social.jpg";
-import { titleSx } from "../styles/AdaptiveSection.styles";
-import { subtitleItalicSx } from "../styles/HowItWorks.styles";
-import { para1Sx } from "../styles/Hero.styles";
-import { cardTitleSx } from "../styles/CorePillars.styles";
+import LangImg from '../assets/images/lang.jpg';
+import MathImg from '../assets/images/math.jpg';
+import SocialImg from '../assets/images/social.jpg';
+import { titleSx } from '../styles/AdaptiveSection.styles';
+import { subtitleItalicSx } from '../styles/HowItWorks.styles';
+import { para1Sx } from '../styles/Hero.styles';
+import { cardTitleSx } from '../styles/CorePillars.styles';
 
 type Pillar = {
-  imageSrc: string; // import & pass in
+  imageSrc: string;
   imageAlt?: string;
   title: string;
   description: string;
@@ -37,7 +30,7 @@ const MotionPaper = motion(Paper);
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
 
 const itemVariants: Variants = {
@@ -48,38 +41,49 @@ const itemVariants: Variants = {
     transition: {
       delay: 0.12 + i * 0.08,
       duration: 0.45,
-      ease: "easeOut",
+      ease: 'easeOut',
     },
   }),
 };
 
+const TitleWithBreak = ({ text }: { text: string }) => {
+  const parts = text.split('&');
+  if (parts.length < 2) return <>{text}</>;
+  const first = parts[0].trim();
+  const rest = parts.slice(1).join('&').trim();
+  return (
+    <>
+      {first} &<br />
+      {rest}
+    </>
+  );
+};
+
 export default function CurriculumBackedSection({
-  heading = "Learning That’s Backed by Curriculum",
-  subheading =
-    "Every activity is carefully aligned with early childhood curriculum, designed together with preschool experts.",
-  thinNote =
-    "That means children are not just playing — they are building real skills that matter for school readiness and lifelong learning.",
+  heading = 'Learning That’s Backed by Curriculum',
+  subheading = 'Every activity is carefully aligned with early childhood curriculum, designed together with preschool experts.',
+  thinNote = 'That means children are not just playing — they are building real skills that matter for school readiness and lifelong learning.',
   pillars = [
     {
       imageSrc: LangImg,
-      imageAlt: "Language & Communication",
-      title: "Language & Communication",
+      imageAlt: 'Language & Communication',
+      title: 'Language & Communication',
       description:
-        "Letters, sounds, stories, and conversations that help children express themselves and build confidence.",
+        'Letters, sounds, stories, and conversations that help children express themselves and build confidence.',
     },
     {
       imageSrc: MathImg,
-      imageAlt: "Math & Logic",
-      title: "Math & Logic",
+      imageAlt: 'Math & Logic',
+      title: 'Math & Logic',
       description:
-        "Numbers, shapes, colors, and matching tasks that strengthen problem-solving and numeracy skills.",
+        'Numbers, shapes, colors, and matching tasks that strengthen problem-solving and numeracy skills.',
     },
     {
       imageSrc: SocialImg,
-      imageAlt: "Emotional & Social Growth",
-      title: "Emotional & Social Growth",
+      imageAlt: 'Emotional & Social Growth',
+      title: 'Emotional & Social Growth',
       description:
-        "Activities that encourage expression, turn-taking, listening, and early science exploration — supporting emotional awareness and curiosity.",
+        'Activities that encourage expression, turn-taking, listening, and early science exploration — supporting emotional awareness and curiosity.',
     },
   ],
 }: CurriculumBackedSectionProps) {
@@ -90,29 +94,29 @@ export default function CurriculumBackedSection({
       component="section"
       sx={{
         py: { xs: 6, md: 10 },
-        background: "linear-gradient(180deg, #14202B 0%, #0F1720 100%)",
       }}
     >
       <Container maxWidth="lg">
         <MotionBox variants={sectionVariants} initial="hidden" animate="show">
           <Stack spacing={2.5} alignItems="center" textAlign="center">
-            <Typography
-              variant="h3"
-              sx={titleSx}
-            >
+            <Typography variant="h3" sx={titleSx}>
               {heading}
             </Typography>
 
             <Typography
               variant="h6"
-              sx={subtitleItalicSx}
+              sx={{
+                ...subtitleItalicSx,
+                marginTop: '3rem !important',
+                marginBottom: '3rem !important',
+              }}
             >
               {subheading}
             </Typography>
 
             <Typography
               variant="body2"
-              sx={{...para1Sx, color:"#ffffff80"}}
+              sx={{ ...para1Sx, color: '#ffffff80', marginBottom: '20px !important' }}
             >
               {thinNote}
             </Typography>
@@ -122,8 +126,8 @@ export default function CurriculumBackedSection({
           <Box
             sx={{
               mt: { xs: 4, md: 6 },
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
               gap: { xs: 4, md: 5 },
             }}
           >
@@ -140,15 +144,15 @@ export default function CurriculumBackedSection({
                 <Stack spacing={1.5} textAlign="left" alignItems="baseline">
                   <MotionPaper
                     whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 140, damping: 16 }}
+                    transition={{ type: 'spring', stiffness: 140, damping: 16 }}
                     elevation={0}
                     sx={{
                       borderRadius: 3,
-                      overflow: "hidden",
-                      backgroundColor:
-                        theme.palette.mode === "dark" ? "#e9eef3" : "#f3f6fa",
-                      width: "100%",
-                      aspectRatio: "16/9",
+                      overflow: 'hidden',
+                      backgroundColor: theme.palette.mode === 'dark' ? '#e9eef3' : '#f3f6fa',
+                      width: '100%',
+                      aspectRatio: '16/9',
+                      marginBottom: '2rem !important',
                     }}
                   >
                     <Box
@@ -156,18 +160,24 @@ export default function CurriculumBackedSection({
                       src={p.imageSrc}
                       alt={p.imageAlt || p.title}
                       sx={{
-                        display: "block",
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
+                        display: 'block',
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
                       }}
                     />
                   </MotionPaper>
 
-                  <Typography variant="h6" sx={{...cardTitleSx, textAlign:'left'}}>
-                    {p.title}
+                  <Typography
+                    variant="h6"
+                    sx={{ ...cardTitleSx, textAlign: 'left', marginBottom: '1rem !important' }}
+                  >
+                    <TitleWithBreak text={p.title} />
                   </Typography>
-                  <Typography variant="body2" sx={{fontFamily:'Inter Variable', fontSize:'18px', color:'#ffffff80'}}>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontFamily: 'Inter Variable', fontSize: '18px', color: '#ffffff80' }}
+                  >
                     {p.description}
                   </Typography>
                 </Stack>

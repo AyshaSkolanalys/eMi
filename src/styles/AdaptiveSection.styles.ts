@@ -1,7 +1,7 @@
-import type { Theme } from '@mui/material/styles'
-import type { SystemStyleObject } from '@mui/system'
+import type { Theme } from '@mui/material/styles';
+import type { SystemStyleObject } from '@mui/system';
 
-type Sx = SystemStyleObject<Theme>
+type Sx = SystemStyleObject<Theme>;
 
 export const sectionSx: Sx = {
   bgcolor: '#0b0b0b',
@@ -9,11 +9,11 @@ export const sectionSx: Sx = {
   py: { xs: '4rem', md: '6rem' },
   position: 'relative',
   overflow: 'hidden',
-}
+};
 
 export const containerSx: Sx = {
   textAlign: 'center',
-}
+};
 
 export const titleSx: Sx = {
   fontFamily: 'Inter Variable',
@@ -24,20 +24,20 @@ export const titleSx: Sx = {
   backgroundClip: 'text',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
-}
+};
 
 export const imageSx: Sx = {
   width: '100%',
   maxWidth: '900px',
   mx: 'auto',
-  borderRadius: 2, 
+  borderRadius: 2,
   boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
   display: 'block',
-}
+};
 
 export const imageMotionProps = {
   initial: { opacity: 0, scale: 0.9 },
   whileInView: { opacity: 1, scale: 1 },
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
   viewport: { once: true },
-} as const
+} as const;
