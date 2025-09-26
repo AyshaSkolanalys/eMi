@@ -7,7 +7,7 @@ type Sx = SystemStyleObject<Theme>;
 export const para1Sx: Sx = {
   fontFamily: 'Inter Variable, Inter, system-ui, sans-serif',
   fontWeight: 500,
-  fontSize: '1.125rem',
+  fontSize: { xs: '0.825rem', md: '1.125rem' },
   lineHeight: 1.6,
   letterSpacing: '-0.02em',
   textAlign: 'center',

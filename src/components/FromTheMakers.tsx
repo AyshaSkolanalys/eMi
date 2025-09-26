@@ -119,7 +119,7 @@ export default function FromTheMakers({
                 fontFamily: 'Georgia, serif',
                 fontWeight: 400,
                 fontStyle: 'italic',
-                fontSize: '32px',
+                fontSize: '24px',
                 display: { xs: 'block', md: 'none' },
               }}
             >
