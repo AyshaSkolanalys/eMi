@@ -12,6 +12,7 @@ import {
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import EmiLogo from '../assets/images/logo.svg';
@@ -65,8 +66,9 @@ const fieldSxWhite = {
 export default function ContactSection({
   heading = 'We’d love to hear from you!',
   logo,
-  emailAddress = 'contact@emi-edtech.com',
+  emailAddress = 'contact@helloemi.eu',
   linkedinUrl = 'https://www.linkedin.com/company/hej-emi',
+  instagramUrl = 'https://www.instagram.com/hej.emi/#',
   onSubmit,
   collectionName = 'contacts',
 }: ContactSectionProps) {
@@ -189,12 +191,21 @@ export default function ContactSection({
                     <Stack direction="row" spacing={2} alignItems="center">
                       <IconButton
                         component="a"
+                        href={instagramUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        sx={{ color: '#fff' }}
+                      >
+                        <InstagramIcon fontSize="medium" />
+                      </IconButton>
+                      <IconButton
+                        component="a"
                         href={linkedinUrl}
                         target="_blank"
                         rel="noreferrer"
-                        sx={{ color: '#fff', width: 34, height: 34 }}
+                        sx={{ color: '#fff', marginLeft: '0 !important' }}
                       >
-                        <LinkedInIcon fontSize="small" />
+                        <LinkedInIcon fontSize="medium" />
                       </IconButton>
                     </Stack>
                   </Stack>
@@ -338,12 +349,21 @@ export default function ContactSection({
                 <Stack direction="row" spacing={2} alignItems="center">
                   <IconButton
                     component="a"
+                    href={instagramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    sx={{ color: '#fff' }}
+                  >
+                    <InstagramIcon fontSize="medium" />
+                  </IconButton>
+                  <IconButton
+                    component="a"
                     href={linkedinUrl}
                     target="_blank"
                     rel="noreferrer"
-                    sx={{ color: '#fff', width: 34, height: 34 }}
+                    sx={{ color: '#fff', marginLeft: '0 !important'}}
                   >
-                    <LinkedInIcon fontSize="small" />
+                    <LinkedInIcon fontSize="medium" />
                   </IconButton>
                 </Stack>
               </Stack>
