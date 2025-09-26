@@ -57,7 +57,7 @@ export const cardTitleSx: Sx = {
   fontFamily: 'Inter Variable',
   fontWeight: 400,
   fontStyle: 'normal',
-  fontSize: '30px',
+  fontSize: { xs: '20px', md: '30px' },
   lineHeight: '140%',
   letterSpacing: '-0.02em',
   textAlign: 'center',
