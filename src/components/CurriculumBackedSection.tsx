@@ -69,21 +69,21 @@ export default function CurriculumBackedSection({
       imageAlt: 'Language & Communication',
       title: 'Language & Communication',
       description:
-        'Letters, sounds, stories, and conversations that help children express themselves and build confidence.',
+        'Stories, word games, songs, letters and conversations that help children strengthen their language, creativity, and self-confidence',
     },
     {
       imageSrc: MathImg,
       imageAlt: 'Math & Logic',
       title: 'Math & Logic',
       description:
-        'Numbers, shapes, colors, and matching tasks that strengthen problem-solving and numeracy skills.',
+        'Numbers, counting, addition, shapes, measurement, and activities that help children develop their problem-solving skills.',
     },
     {
       imageSrc: SocialImg,
       imageAlt: 'Emotional & Social Growth',
       title: 'Emotional & Social Growth',
       description:
-        'Activities that encourage expression, turn-taking, listening, and early science exploration — supporting emotional awareness and curiosity.',
+        'Activities that strengthen the ability to express their opinions, collaborate with others, and reason in different situations.',
     },
   ],
 }: CurriculumBackedSectionProps) {

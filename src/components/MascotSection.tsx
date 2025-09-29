@@ -25,7 +25,7 @@ const sectionVariants: Variants = {
 };
 
 export default function MascotSection({
-  heading = 'A friend who guides, cheers, and grows with the kid.',
+  heading = 'A friend who guides, cheers, and grows with the child.',
   mascotImg,
   mascotAlt = 'Mascot',
   leftText = 'Learning with eMi is never a solo journey. From the very first tap, each child chooses their own mascot — a friendly buddy who stays by their side on every page.',

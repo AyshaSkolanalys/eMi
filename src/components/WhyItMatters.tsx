@@ -41,15 +41,13 @@ export default function WhyItMatters({
     {
       title: 'The Challenge',
       description:
-        'Preschool teachers manage many children at once, each with different strengths and needs. Some require extra support, others more challenge, and it’s difficult to give personalized attention to everyone. Regular tablets and apps add distractions, making focused learning even harder.',
+        'Preschool teachers manage many children at once, each with different strengths and needs. Some are more challenging and require extra support, making it difficult to give personalized attention to each student. Regular tablets and apps add distractions, making focused learning even harder.',
     },
     {
       title: 'The Opportunity',
       description: (
         <>
-          Technology now makes personalization possible, in a safe and structured way. <br />
-          With adaptive AI, curriculum-aligned content, and engaging activities, digital tools can
-          finally support teachers, instead of adding more work.
+          Technology now makes personalization possible in a safe and structured way. With adaptive AI, curriculum-aligned content and engaging activities, digital tools can finally support teachers instead of adding more work to their plates.
         </>
       ),
     },

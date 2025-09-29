@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import type { Variants, TargetAndTransition } from 'framer-motion';
 import { titleSx } from '../styles/AdaptiveSection.styles';
 import { body3Sx, para4Sx } from '../styles/FeaturesSection.styles';
+import { cardStackSx, cardTitleSx } from '../styles/CorePillars.styles';
 
 export type Feature = {
   title: string;
@@ -111,11 +112,11 @@ export default function FeaturesSection({
                   minWidth: 0,
                 }}
               >
-                <Stack spacing={1.2} textAlign="left">
-                  <Typography variant="h6" sx={body3Sx}>
+                <Stack spacing={2.5} textAlign="left">
+                  <Typography variant="h6" sx={{...cardTitleSx, justifyContent: 'flex-start'}}>
                     {f.title}
                   </Typography>
-                  <Typography variant="body2" sx={para4Sx}>
+                  <Typography variant="body2"  sx={{ fontFamily: 'Inter Variable', fontSize: '18px', color: '#ffffff80' }}>
                     {f.description}
                   </Typography>
                 </Stack>

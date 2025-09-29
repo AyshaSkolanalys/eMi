@@ -50,7 +50,7 @@ export default function BenefitsSection({
       points: [
         'Learning feels like play, guided by a trusted mascot.',
         'Builds confidence through encouragement and small celebrations.',
-        'Adaptive challenges help every child progress at their own pace.',
+        'Learning is personalized by providing challenges tailored to each child’s current level.',
       ],
     },
     {
@@ -58,7 +58,7 @@ export default function BenefitsSection({
       imageAlt: 'For Teachers',
       title: 'For Teachers',
       points: [
-        'Less stress tracking progress manually.',
+        'Strengthens the impact of their teaching through tailored feedback.',
         'Easy-to-use dashboard with real-time insights.',
         'More time to focus on care, creativity, and meaningful interactions.',
       ],
@@ -143,7 +143,7 @@ export default function BenefitsSection({
                     {it.title}
                   </Typography>
 
-                  <Stack spacing={1.4}>
+                  <Stack spacing={3}>
                     {it.points.map((p, idx) => (
                       <Typography
                         key={idx}

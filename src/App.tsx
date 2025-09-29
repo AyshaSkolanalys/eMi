@@ -46,7 +46,7 @@ function App() {
           color: '#fff',
         }}
       >
-        <StyledTitle title="Discover eMi" fontColor="#FFFFFF1A" id="discover" />
+        <StyledTitle title="Discover eMi" fontColor="#FFFFFF4A" id="discover" />
         <CorePillars />
         <HowItWorks imageSrc={HowItWorksIllustration} />
         <WhyItMatters imageSrc={WhyItMattersIllustration} />
@@ -57,7 +57,7 @@ function App() {
           color: '#fff',
         }}
       >
-        <StyledTitle title="What's Inside" fontColor="#00000033" id="inside" />
+        <StyledTitle title="What's Inside" fontColor="#FFFFFF8A" id="inside" />
         <CurriculumBackedSection />
         <FeaturesSection />
         <BenefitsSection />
@@ -68,11 +68,11 @@ function App() {
           color: '#fff',
         }}
       >
-        <StyledTitle title="Meet the Mascot" fontColor="#FFFFFF1A" id="mascot" />
+        <StyledTitle title="Meet the Mascot" fontColor="#FFFFFF4A" id="mascot" />
         <MascotSection mascotImg={MascotBear} />
       </Box>
       <Box sx={{ backgroundColor: '#E1E8EB' }}>
-        <StyledTitle title="What's Next" fontColor="#1919191A" id="mascot" />
+        <StyledTitle title="What's Next" fontColor="#1919194A" id="mascot" />
         <WhatsNext mascotSrc={EmiImage} onCtaClick={scrollToContact} />
       </Box>
 
@@ -82,7 +82,7 @@ function App() {
           color: '#fff',
         }}
       >
-        <StyledTitle title="About Us" fontColor="#FFFFFF1A" id="about" />
+        <StyledTitle title="About Us" fontColor="#FFFFFF7A" id="about" />
         <FromTheMakers />
         <TeamSection />
       </Box>
