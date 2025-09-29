@@ -86,7 +86,7 @@ export default function FromTheMakers({
       logoAlt: 'Myran',
       title: 'Knowledge development in preschool at group level',
       description:
-        'Myran is created to increase children’s curiosity and desire to learn. With the help of Myran, you get a formative assessment of the children’s skills and can follow their development over time at group level. The result is analyzed with the help of digital technology and presented broken down by knowledge criteria, age and gender.',
+        'Myran was created to increase children’s curiosity and desire to learn. With the help of Myran, you get a formative assessment of the children’s skills and can follow their development over time at group level. The result is analyzed with the help of digital technology and presented broken down by knowledge criteria, age and gender.',
       imageSrc: MyranScreenshot,
       ctaText: 'Read more',
       reverse: true,

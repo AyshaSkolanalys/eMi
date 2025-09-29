@@ -1,5 +1,5 @@
 // src/components/TeamSection.tsx
-import { Box, Container, Stack, Typography, useTheme } from '@mui/material';
+import { Box, Container, Stack, Typography, useTheme, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import type { Variants, TargetAndTransition } from 'framer-motion';
 
@@ -8,9 +8,13 @@ import FoxsyLogo from '../assets/images/foxsy.png';
 import AiLogo from '../assets/images/ai.png';
 import HelsingborgLogo from '../assets/images/helsingborg.png';
 import UniversityLogo from '../assets/images/university.png';
+import MariusImage from '../assets/images/MariusImage.png';
+import AdrianImage from '../assets/images/AdrianImage.png';
+import SebastianImage from '../assets/images/SebastianImage.png';
 import { titleSx } from '../styles/AdaptiveSection.styles';
 import { para1Sx } from '../styles/Hero.styles';
 import { body3Sx } from '../styles/FeaturesSection.styles';
+import { cardTitleSx } from '../styles/CorePillars.styles';
 
 type Partner = {
   logoSrc: string; // import and pass in
@@ -27,6 +31,7 @@ export type TeamSectionProps = {
 };
 
 const MotionBox = motion(Box);
+const MotionPaper = motion(Paper);
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -61,6 +66,33 @@ export default function TeamSection({
 }: TeamSectionProps) {
   const theme = useTheme();
 
+  const teamMembers = [
+    {
+      imageSrc: MariusImage,
+      imageAlt: 'Marius Image',
+      title: 'Marius',
+      designation: 'CEO',
+      description:
+        'Marius, with over 20 years of IT experience, is a continuous learner passionate about business development and innovation, in the setting of new technology.',
+    },
+    {
+      imageSrc: AdrianImage,
+      imageAlt: 'Adrian Image',
+      title: 'Adrian',
+      designation: 'CRO',
+      description:
+        'Adrian, a NYC tech entrepreneur with a PhD in Physics and a Master’s in Computer Science, leads ventures in fintech and AI, driven by his passion for startups, blockchain, and artificial intelligence.',
+    },
+    {
+      imageSrc: SebastianImage,
+      imageAlt: 'Sebastian Image',
+      title: 'Sebastian',
+      designation: 'Senior AI and Robotics Advisor',
+      description:
+        'Sebastian, a 22+ year AI and robotics pioneer. He won 1st place in RoboCup’s Cooperative Challenge and secured 4x 3rd place finishes in the main competition, showcasing his innovation and leadership.',
+    },
+  ];
+
   return (
     <Box
       component="section"
@@ -83,12 +115,106 @@ export default function TeamSection({
               {description}
             </Typography>
 
-            <Typography variant="subtitle2" sx={{ ...body3Sx, color: '#19191999' }}>
+            <Stack
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={4}
+          justifyContent="center"
+          alignItems="stretch"
+          sx={{ flexWrap: 'wrap', marginBottom:'80px !important' }}
+        >
+          {teamMembers.map((p, i) => (
+            <motion.div
+              key={p.title}
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={i}
+              style={{ flex: 1, minWidth: 280, maxWidth: 400 }}
+            >
+              <Stack
+                spacing={2}
+                textAlign="left"
+                alignItems="flex-start"
+                sx={{
+                  backgroundColor: '#000',
+                  color: 'white',
+                  height: '100%',
+                }}
+              >
+                <MotionPaper
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: 'spring', stiffness: 140, damping: 16 }}
+                  elevation={0}
+                  sx={{
+                    borderRadius: 0,
+                    overflow: 'hidden',
+                    width: '100%',
+                    height: 'auto',
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={p.imageSrc}
+                    alt={p.imageAlt}
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                      display: 'block',
+                    }}
+                  />
+                </MotionPaper>
+
+                <Box sx={{ px: 2, pb: 3 }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontFamily: 'Inter Variable',
+                      fontWeight: 700,
+                      color: 'white',
+                      mb: 0.5,
+                    }}
+                  >
+                    {p.title}
+                  </Typography>
+
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      fontFamily: 'Inter Variable',
+                      fontWeight: 400,
+                      color: '#ffffff80',
+                      mb: 2,
+                    }}
+                  >
+                    {p.designation}
+                  </Typography>
+
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontFamily: 'Inter Variable',
+                      fontSize: '16px',
+                      color: '#ffffffb3',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {p.description}
+                  </Typography>
+                </Box>
+              </Stack>
+            </motion.div>
+          ))}
+        </Stack>
+
+            <Typography variant="subtitle2" sx={{ ...body3Sx, color: '#19191999'}}>
               {partnersLabel}
             </Typography>
           </Stack>
 
-          {/* Logos row (no Grid) */}
+        
+
           <Box
             sx={{
               mt: { xs: 3, md: 4 },
