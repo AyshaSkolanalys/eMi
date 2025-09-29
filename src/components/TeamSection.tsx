@@ -14,7 +14,6 @@ import SebastianImage from '../assets/images/SebastianImage.png';
 import { titleSx } from '../styles/AdaptiveSection.styles';
 import { para1Sx } from '../styles/Hero.styles';
 import { body3Sx } from '../styles/FeaturesSection.styles';
-import { cardTitleSx } from '../styles/CorePillars.styles';
 
 type Partner = {
   logoSrc: string; // import and pass in

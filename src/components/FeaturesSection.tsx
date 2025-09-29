@@ -3,8 +3,7 @@ import { Box, Container, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import type { Variants, TargetAndTransition } from 'framer-motion';
 import { titleSx } from '../styles/AdaptiveSection.styles';
-import { body3Sx, para4Sx } from '../styles/FeaturesSection.styles';
-import { cardStackSx, cardTitleSx } from '../styles/CorePillars.styles';
+import { cardTitleSx } from '../styles/CorePillars.styles';
 
 export type Feature = {
   title: string;
