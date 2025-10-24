@@ -8,6 +8,7 @@ import FoxsyLogo from '../assets/images/foxsy.png';
 import AiLogo from '../assets/images/ai.png';
 import HelsingborgLogo from '../assets/images/helsingborg.png';
 import UniversityLogo from '../assets/images/university.png';
+import EuropUnionLogo from '../assets/images/europe-union.jpg';
 import MariusImage from '../assets/images/MariusImage.png';
 import AdrianImage from '../assets/images/AdrianImage.png';
 import SebastianImage from '../assets/images/SebastianImage.png';
@@ -60,6 +61,11 @@ export default function TeamSection({
       alt: 'University Partner',
       maxWidth: 110,
       href: 'https://familjenhelsingborg.se/',
+    },
+    {
+      logoSrc: EuropUnionLogo,
+      alt: 'Europe Union',
+      maxWidth: 110,
     },
   ],
 }: TeamSectionProps) {
@@ -115,104 +121,102 @@ export default function TeamSection({
             </Typography>
 
             <Stack
-          direction={{ xs: 'column', md: 'row' }}
-          spacing={4}
-          justifyContent="center"
-          alignItems="stretch"
-          sx={{ flexWrap: 'wrap', marginBottom:'80px !important' }}
-        >
-          {teamMembers.map((p, i) => (
-            <motion.div
-              key={p.title}
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={i}
-              style={{ flex: 1, minWidth: 280, maxWidth: 400 }}
+              direction={{ xs: 'column', md: 'row' }}
+              spacing={4}
+              justifyContent="center"
+              alignItems="stretch"
+              sx={{ flexWrap: 'wrap', marginBottom: '80px !important' }}
             >
-              <Stack
-                spacing={2}
-                textAlign="left"
-                alignItems="flex-start"
-                sx={{
-                  backgroundColor: '#000',
-                  color: 'white',
-                  height: '100%',
-                }}
-              >
-                <MotionPaper
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: 'spring', stiffness: 140, damping: 16 }}
-                  elevation={0}
-                  sx={{
-                    borderRadius: 0,
-                    overflow: 'hidden',
-                    width: '100%',
-                    height: 'auto',
-                  }}
+              {teamMembers.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  variants={itemVariants}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.2 }}
+                  custom={i}
+                  style={{ flex: 1, minWidth: 280, maxWidth: 400 }}
                 >
-                  <Box
-                    component="img"
-                    src={p.imageSrc}
-                    alt={p.imageAlt}
+                  <Stack
+                    spacing={2}
+                    textAlign="left"
+                    alignItems="flex-start"
                     sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'contain',
-                      display: 'block',
-                    }}
-                  />
-                </MotionPaper>
-
-                <Box sx={{ px: 2, pb: 3 }}>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontFamily: 'Inter Variable',
-                      fontWeight: 700,
+                      backgroundColor: '#000',
                       color: 'white',
-                      mb: 0.5,
+                      height: '100%',
                     }}
                   >
-                    {p.title}
-                  </Typography>
+                    <MotionPaper
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: 'spring', stiffness: 140, damping: 16 }}
+                      elevation={0}
+                      sx={{
+                        borderRadius: 0,
+                        overflow: 'hidden',
+                        width: '100%',
+                        height: 'auto',
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src={p.imageSrc}
+                        alt={p.imageAlt}
+                        sx={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                          display: 'block',
+                        }}
+                      />
+                    </MotionPaper>
 
-                  <Typography
-                    variant="subtitle1"
-                    sx={{
-                      fontFamily: 'Inter Variable',
-                      fontWeight: 400,
-                      color: '#ffffff80',
-                      mb: 2,
-                    }}
-                  >
-                    {p.designation}
-                  </Typography>
+                    <Box sx={{ px: 2, pb: 3 }}>
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          fontFamily: 'Inter Variable',
+                          fontWeight: 700,
+                          color: 'white',
+                          mb: 0.5,
+                        }}
+                      >
+                        {p.title}
+                      </Typography>
 
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontFamily: 'Inter Variable',
-                      fontSize: '16px',
-                      color: '#ffffffb3',
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {p.description}
-                  </Typography>
-                </Box>
-              </Stack>
-            </motion.div>
-          ))}
-        </Stack>
+                      <Typography
+                        variant="subtitle1"
+                        sx={{
+                          fontFamily: 'Inter Variable',
+                          fontWeight: 400,
+                          color: '#ffffff80',
+                          mb: 2,
+                        }}
+                      >
+                        {p.designation}
+                      </Typography>
 
-            <Typography variant="subtitle2" sx={{ ...body3Sx, color: '#19191999'}}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          fontFamily: 'Inter Variable',
+                          fontSize: '16px',
+                          color: '#ffffffb3',
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {p.description}
+                      </Typography>
+                    </Box>
+                  </Stack>
+                </motion.div>
+              ))}
+            </Stack>
+
+            <Typography variant="subtitle2" sx={{ ...body3Sx, color: '#19191999' }}>
               {partnersLabel}
             </Typography>
           </Stack>
-
-        
 
           <Box
             sx={{
